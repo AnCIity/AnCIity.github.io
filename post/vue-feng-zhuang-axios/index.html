@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AnBlog</title>
+<title>Vue封装axios | AnBlog</title>
 <meta name="description" content="温故而知新" />
 <link rel="shortcut icon" href="https://AnCIity.github.io/favicon.ico?v=1572096299254">
 <link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 <link rel="stylesheet" href="https://AnCIity.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="AnBlog - Atom Feed" href="https://AnCIity.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Vue封装axios | AnBlog - Atom Feed" href="https://AnCIity.github.io/atom.xml">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
@@ -18,7 +18,8 @@
 
   </head>
   <body>
-    <div class="head">
+    <div class="site-nav no-cover">
+      <div class="head">
   <div class="inner">
     <a class="site-name" href="https://AnCIity.github.io">
         <span>AnBlog</span>
@@ -52,35 +53,73 @@
     </nav>
   </div>
 </div>
-    <div class="info _site">
-      <div class="inner">
-        <div class="info_main">
-          <h1 class="info_title"><i class="remixicon-archive-line"></i> 目前共计 1 篇创作</h1>
-        </div>
-      </div>
     </div>
-    <div class="main">
-      <div class="inner">
-        <div class="items">
-  
-    <div class="item Article">
+    <article role="main" class="hentry ">
       
-      <a class="item-main" href="https://AnCIity.github.io/post/vue-feng-zhuang-axios">
-        <div class="item-meta">
-          <time datetime="2019-10-26 21:17:23">10-26 2019</time>
-        </div>
-        <h2>Vue封装axios</h2>
-      </a>
-    </div>
-  
-</div>
-
-        <div class="navigation">
-  
-  
-</div>
+      <h1 class="entry-title" itemprop="headline">Vue封装axios</h1>
+      <div class="entry-meta">
+        <time class="updated" datetime="2019-10-26 21:17:23">10-26 2019</time>
+        <span class="author vcard">
+          1 min read
+        </span>
       </div>
-    </div>
+      <div class="post-content yue">
+        <blockquote>
+<p>新建目录文件：</p>
+<p>@/utils/http.js</p>
+</blockquote>
+<pre><code class="language-js">/**
+* @author City
+* @description axios封装，请求拦截、响应拦截、错误统一处理
+*/
+
+import axios from 'axios';
+
+// 创建axios实例
+const instance = axios.create();
+// 设置post请求头
+instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+
+// 添加请求拦截器
+axios.interceptors.request.use(function (config) {
+    // 在发送请求之前做些什么
+    return config;
+  }, function (error) {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+  });
+
+
+// 添加响应拦截器
+axios.interceptors.response.use(function (response) {
+    // 对响应数据做点什么
+    return response;
+  }, function (error) {
+    // 对响应错误做点什么
+    return Promise.reject(error);
+  });
+
+
+export default instance;
+</code></pre>
+
+      </div>
+      <div class="entry-block">
+        <div class="entry-tags">
+          
+            <a href="https://AnCIity.github.io/tag/vue">
+              vue
+            </a>
+          
+        </div>
+      </div>
+    </article>
+    
+    
+
+    
+
     <footer class="footer">
   <div class="main">
     <a href="https://AnCIity.github.io">

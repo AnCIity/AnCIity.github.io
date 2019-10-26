@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnCIity.github.io</id>
     <title>AnBlog</title>
-    <updated>2019-10-25T09:13:27.528Z</updated>
+    <updated>2019-10-26T13:31:09.809Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnCIity.github.io"/>
     <link rel="self" href="https://AnCIity.github.io/atom.xml"/>
@@ -11,12 +11,50 @@
     <icon>https://AnCIity.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, AnBlog</rights>
     <entry>
-        <title type="html"><![CDATA[cs]]></title>
-        <id>https://AnCIity.github.io/post/cs</id>
-        <link href="https://AnCIity.github.io/post/cs">
+        <title type="html"><![CDATA[Vue封装axios]]></title>
+        <id>https://AnCIity.github.io/post/vue-feng-zhuang-axios</id>
+        <link href="https://AnCIity.github.io/post/vue-feng-zhuang-axios">
         </link>
-        <updated>2019-10-25T08:05:43.000Z</updated>
-        <content type="html"><![CDATA[<p>cs</p>
+        <updated>2019-10-26T13:17:23.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>新建目录文件：</p>
+<p>@/utils/http.js</p>
+</blockquote>
+<pre><code class="language-js">/**
+* @author City
+* @description axios封装，请求拦截、响应拦截、错误统一处理
+*/
+
+import axios from 'axios';
+
+// 创建axios实例
+const instance = axios.create();
+// 设置post请求头
+instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+
+// 添加请求拦截器
+axios.interceptors.request.use(function (config) {
+    // 在发送请求之前做些什么
+    return config;
+  }, function (error) {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+  });
+
+
+// 添加响应拦截器
+axios.interceptors.response.use(function (response) {
+    // 对响应数据做点什么
+    return response;
+  }, function (error) {
+    // 对响应错误做点什么
+    return Promise.reject(error);
+  });
+
+
+export default instance;
+</code></pre>
 ]]></content>
     </entry>
 </feed>
