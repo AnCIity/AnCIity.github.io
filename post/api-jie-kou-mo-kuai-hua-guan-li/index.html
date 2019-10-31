@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-       <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="referrer" content="never">
   <meta name="description" content="">
   <meta name="author" content="kveln">
   <meta name="keywords" content="">
-  <title>AnBlog</title>
+  <title>Api接口模块化管理 | AnBlog</title>
   <link href="https://AnCIity.github.io/media/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="https://AnCIity.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="Api接口模块化管理 | AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
@@ -63,33 +63,123 @@
       </div>
     </div>
   </nav>
-<!-- Page Header -->
+  <!-- Page Header -->
   <header class="masthead" style="background-image: url('https://AnCIity.github.io/media/images/home-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1 class="tag-tl">Tags</h1>
+          	<span class="tags">
+          	 
+        </span>
+            <h1>Api接口模块化管理</h1>
+            <span class="meta">
+            	Posted on
+              10-31 2019，2 min read
+            </span>
           </div>
         </div>
       </div>
     </div>
   </header>
-  <div class="container">
-    <div class="row">
-     
-      <div class="col-lg-8 col-md-10 mx-auto">
-       
-           <div class="post-preview tag-list">
-          <a href="https://AnCIity.github.io/tag/FB1uDZKku" class="tag">
-              Vue
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h3 id="文件介绍">文件介绍</h3>
+<p>了解并新建以下目录文件</p>
+<blockquote>
+<p><code>@apis</code> api管理文件夹</p>
+<p><code>@apis/index.js</code> api接口的通一出口</p>
+<p><code>@apis/base.js</code> 接口域名管理</p>
+<p><code>@apis/xxx.js</code> 更多接口模块</p>
+<p><code>@apis/filing.js</code> 示例接口模块 用于定义filing模块接口列表</p>
+</blockquote>
+<h3 id="index">index</h3>
+<pre><code class="language-js">/**
+* @author City
+* @description api接口的通一出口
+*/
+
+//  导出接口
+//  归档模块接口
+import filing from '@/apis/filing'
+
+
+
+//  导出接口
+export default{
+    filing
+}
+</code></pre>
+<h3 id="base">base</h3>
+<pre><code class="language-js">/**
+ * @author City
+ * @description 接口域名管理
+ */
+
+
+const base = {
+    anLink: '/api'
+}
+
+
+ export default base;
+</code></pre>
+<h3 id="filing">filing</h3>
+<pre><code class="language-js">/**
+* @author City
+* @description filing模块接口列表
+*/
+
+import base from './base'; // 导入接口域名列表
+import axios from '@/utils/http' // 导入http中创建的axios实例
+import qs from 'qs' // 根据需求导入qs模块，序列化post数据
+
+const filing = {
+    // 归档菜单
+    Menu () {
+        return axios.get(`${base.anLink}/menu`);
+    },
+    // 归档列表
+    List () {
+        return axios.get(`${base.anLink}/list`)
+    }
+    // 新闻详情,演示    
+    // articleDetail (id, params) {        
+    //     return axios.get(`${base.sq}/topic/${id}`, {            
+    //         params: params        
+    //     });    
+    // },
+    // // post提交    
+    // login (params) {        
+    //     return axios.post(`${base.sq}/accesstoken`, qs.stringify(params));    
+    // }
+
+}
+
+
+export default filing;
+</code></pre>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://AnCIity.github.io/post/vue-feng-zhuang-axios">
+              <span class="post-title">
+                Vue封装axios
+              </span>
             </a>
-        </div>
+          </p>
         
+        <div class="comment">
+          
+        </div>
       </div>
     </div>
-  </div>
+  </article>
  <!-- Footer -->
   <footer>
     <div class="container">
@@ -158,3 +248,4 @@
   })(this));</script>
   </body>
 </html>
+

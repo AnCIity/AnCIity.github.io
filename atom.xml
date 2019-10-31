@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnCIity.github.io</id>
     <title>AnBlog</title>
-    <updated>2019-10-26T13:31:09.809Z</updated>
+    <updated>2019-10-31T06:03:01.959Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnCIity.github.io"/>
     <link rel="self" href="https://AnCIity.github.io/atom.xml"/>
@@ -10,6 +10,89 @@
     <logo>https://AnCIity.github.io/images/avatar.png</logo>
     <icon>https://AnCIity.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, AnBlog</rights>
+    <entry>
+        <title type="html"><![CDATA[Api接口模块化管理]]></title>
+        <id>https://AnCIity.github.io/post/api-jie-kou-mo-kuai-hua-guan-li</id>
+        <link href="https://AnCIity.github.io/post/api-jie-kou-mo-kuai-hua-guan-li">
+        </link>
+        <updated>2019-10-31T05:53:12.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="文件介绍">文件介绍</h3>
+<p>了解并新建以下目录文件</p>
+<blockquote>
+<p><code>@apis</code> api管理文件夹</p>
+<p><code>@apis/index.js</code> api接口的通一出口</p>
+<p><code>@apis/base.js</code> 接口域名管理</p>
+<p><code>@apis/xxx.js</code> 更多接口模块</p>
+<p><code>@apis/filing.js</code> 示例接口模块 用于定义filing模块接口列表</p>
+</blockquote>
+<h3 id="index">index</h3>
+<pre><code class="language-js">/**
+* @author City
+* @description api接口的通一出口
+*/
+
+//  导出接口
+//  归档模块接口
+import filing from '@/apis/filing'
+
+
+
+//  导出接口
+export default{
+    filing
+}
+</code></pre>
+<h3 id="base">base</h3>
+<pre><code class="language-js">/**
+ * @author City
+ * @description 接口域名管理
+ */
+
+
+const base = {
+    anLink: '/api'
+}
+
+
+ export default base;
+</code></pre>
+<h3 id="filing">filing</h3>
+<pre><code class="language-js">/**
+* @author City
+* @description filing模块接口列表
+*/
+
+import base from './base'; // 导入接口域名列表
+import axios from '@/utils/http' // 导入http中创建的axios实例
+import qs from 'qs' // 根据需求导入qs模块，序列化post数据
+
+const filing = {
+    // 归档菜单
+    Menu () {
+        return axios.get(`${base.anLink}/menu`);
+    },
+    // 归档列表
+    List () {
+        return axios.get(`${base.anLink}/list`)
+    }
+    // 新闻详情,演示    
+    // articleDetail (id, params) {        
+    //     return axios.get(`${base.sq}/topic/${id}`, {            
+    //         params: params        
+    //     });    
+    // },
+    // // post提交    
+    // login (params) {        
+    //     return axios.post(`${base.sq}/accesstoken`, qs.stringify(params));    
+    // }
+
+}
+
+
+export default filing;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Vue封装axios]]></title>
         <id>https://AnCIity.github.io/post/vue-feng-zhuang-axios</id>
