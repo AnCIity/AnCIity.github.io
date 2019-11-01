@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnCIity.github.io</id>
     <title>AnBlog</title>
-    <updated>2019-11-01T08:51:46.000Z</updated>
+    <updated>2019-11-01T08:55:06.680Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnCIity.github.io"/>
     <link rel="self" href="https://AnCIity.github.io/atom.xml"/>
@@ -10,6 +10,65 @@
     <logo>https://AnCIity.github.io/images/avatar.png</logo>
     <icon>https://AnCIity.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, AnBlog</rights>
+    <entry>
+        <title type="html"><![CDATA[ES6 - 初识]]></title>
+        <id>https://AnCIity.github.io/post/es6-acquaintance</id>
+        <link href="https://AnCIity.github.io/post/es6-acquaintance">
+        </link>
+        <updated>2019-11-01T08:52:08.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="变量">变量</h3>
+<p><strong>let</strong>：块级作用域</p>
+<p><strong>const</strong>：声明常量，必须赋一个初始值，不可改变，不可重复声明</p>
+<h3 id="引入方式">引入方式</h3>
+<blockquote>
+<p>import require export</p>
+</blockquote>
+<h6 id="遵循规范">遵循规范</h6>
+<ul>
+<li><strong>require</strong> 是 AMD规范引入方式</li>
+<li><strong>import</strong>是es6的一个语法标准，如果要兼容浏览器的话必须转化成es5的语法</li>
+</ul>
+<h6 id="调用时间">调用时间：</h6>
+<p><strong>import</strong>：编译时调用，必须放在文件开头</p>
+<p><strong>require</strong>：运行时调用，理论上可以运用在代码任何地方</p>
+<h6 id="本质">本质：</h6>
+<p><strong>import</strong>：解构过程，但是目前所有的引擎都还没有实现import，我们在node中使用babel支持ES6，也仅仅是将ES6转码为ES5再执行，import语法会被转码为require</p>
+<p><strong>require</strong>：赋值过程，require的结果就是对象，数字，字符串，函数等，再把require的结果赋值给某个变量</p>
+<p>export 与 import相对应 导出 导入</p>
+<h3 id="箭头函数">箭头函数</h3>
+<p>arrow function</p>
+<pre><code class="language-js">function(i){ return i + 1; } //ES5
+let funname = i =&gt; i + 1; //ES6一个参数一句代码简写
+let funname = (a, b) =&gt; a + b;// 如果只有一句代码并为return，可省略return
+let funname = (x, y) =&gt; {x++; y--; return x+y}; //ES6
+</code></pre>
+<h3 id="字符串嵌入">字符串嵌入</h3>
+<p>template string</p>
+<pre><code class="language-js">let name  = &quot;tony&quot;;
+let str1 = &quot;hello,${name}!&quot;
+let str2 = `hello,${name}!`
+</code></pre>
+<h3 id="构造函数">构造函数</h3>
+<blockquote>
+<p>constructor</p>
+</blockquote>
+<pre><code class="language-javascript">constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+</code></pre>
+<h3 id="对象">对象</h3>
+<pre><code class="language-javascript">let foo =&quot;tony&quot;
+    const obj = {
+        foo: foo,// 同名可简写为：foo,
+        bar:function () {// 可简写为：bar(){}
+            console.log(this.foo)
+        }
+    }
+    console.log(obj.bar())
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Vue - 配置less环境]]></title>
         <id>https://AnCIity.github.io/post/vue-less-environment</id>
