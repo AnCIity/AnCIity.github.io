@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnCIity.github.io</id>
     <title>AnBlog</title>
-    <updated>2019-11-01T08:31:34.350Z</updated>
+    <updated>2019-11-01T08:40:16.877Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnCIity.github.io"/>
     <link rel="self" href="https://AnCIity.github.io/atom.xml"/>
@@ -84,7 +84,7 @@ module.exports = {
 </blockquote>
 <h3 id="工作流程">工作流程</h3>
 <hr>
-<figure data-type="image" tabindex="1"><img src="C:%5CUsers%5CCity%5CDesktop%5Cvuex.png" alt="vuex"></figure>
+<figure data-type="image" tabindex="1"><img src="https://AnCIity.github.io/post-images/1572597146141.png" alt=""></figure>
 <ol>
 <li>在vue组件里面，通过<strong>dispatch</strong>来触发<strong>actions</strong>提交修改数据的操作。</li>
 <li>然后再通过<strong>actions</strong>的<strong>commit</strong>来触发<strong>mutations</strong>来修改数据。</li>
