@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnCIity.github.io</id>
     <title>AnBlog</title>
-    <updated>2019-11-01T12:12:56.934Z</updated>
+    <updated>2019-11-01T16:22:26.576Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnCIity.github.io"/>
     <link rel="self" href="https://AnCIity.github.io/atom.xml"/>
@@ -672,6 +672,7 @@ export default instance;
 </tr>
 </tbody>
 </table>
+<p>源于高中学习一年多的美术，受此影响我选择了学习Web前端。</p>
 <p>喜欢研究前沿技术，熟练使用<strong>markdown</strong>记录项目与学习过程。</p>
 <p>积极向上，做事脚踏实地，有良好的解决问题、沟通和学习能力。</p>
 <h3 id="技术栈与工具">技术栈与工具</h3>
@@ -685,11 +686,11 @@ export default instance;
 </ul>
 <h3 id="技术分享">技术分享</h3>
 <hr>
-<p><strong>GitHub</strong>：<a href="https://github.com/anciity/">https://github.com/anciity/</a></p>
-<p><strong>个人博客</strong>：<a href="https://nanzc.com/">https://nanzc.com/</a> （anciity.github.io）</p>
+<p><strong>GitHub</strong>：https://github.com/anciity/</p>
+<p><strong>个人博客</strong>：https://nanzc.com/ （anciity.github.io）</p>
 <ul>
-<li>博客由GitHub的功能 <strong>GitHub Pages</strong> + 静态博客系统 <strong>Gridea</strong> + 评论插件 <strong>Gitalk</strong> 搭建而成。</li>
-<li>由于国内访问 <strong>GitHub Pages</strong> 不是很理想，于是使用内容分发 <strong>CDN</strong> 进行访问加速。</li>
+<li>博客由 <strong>GitHub Pages</strong> + 静态博客系统 <strong>Gridea</strong> + 评论插件 <strong>Gitalk</strong> 搭建而成。</li>
+<li>由于国内访问GitHub Pages不是很理想，于是使用内容分发 <strong>CDN</strong> 进行访问加速。</li>
 </ul>
 <h3 id="项目经验">项目经验</h3>
 <hr>
@@ -698,12 +699,12 @@ export default instance;
 <li>前端页面皆为 <strong>自行设计</strong> ，域名配置、服务器部署、文档编写等工作都是 <strong>自己完成</strong>。</li>
 <li>前端通过 <strong>axios</strong> 跨域请求至本地使用 <strong>Mock.js</strong> mock好的数据。</li>
 <li>前端采用了 <strong>Vue + Element</strong> ，后端采用了 <strong>Python + Flask + MySQL</strong>。</li>
-<li>使用媒体查询进行 <strong>移动端适配</strong> ，使用卡片式以及过度效果，提升用户 <strong>交互体验</strong>。</li>
+<li>使用媒体查询进行 <strong>移动端适配</strong> ，使用卡片式以及过度效果等，提升用户 <strong>交互体验</strong>。</li>
 <li>使用 <strong>字蛛</strong> 提取自定义字体中网站使用字符，以压缩字体文件，提升用户 <strong>访问速度</strong>。</li>
 </ul>
 <p><strong>2. 登录模板</strong> （PC）</p>
 <ul>
-<li>前端采用 <strong>canvas</strong> 绘制粒子特效，配合雪景图给人以下雪之感。</li>
+<li>前端采用 <strong>canvas</strong> 绘制粒子特效，配合雪景图给人以雪感。</li>
 <li>后端使用 <strong>PHP</strong> ，结构分为header、container、footer三层。</li>
 </ul>
 ]]></content>
