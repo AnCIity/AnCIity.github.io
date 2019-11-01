@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-       <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="referrer" content="never">
   <meta name="description" content="">
   <meta name="author" content="kveln">
   <meta name="keywords" content="">
-  <title>AnBlog</title>
+  <title>Git - 推送已有项目到远程仓库 | AnBlog</title>
   <link href="https://AnCIity.github.io/media/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="https://AnCIity.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="Git - 推送已有项目到远程仓库 | AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
@@ -63,68 +63,89 @@
       </div>
     </div>
   </nav>
-<!-- Page Header -->
+  <!-- Page Header -->
   <header class="masthead" style="background-image: url('https://AnCIity.github.io/media/images/home-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1 class="tag-tl">#Vue</h1>
+          	<span class="tags">
+          	 
+        </span>
+            <h1>Git - 推送已有项目到远程仓库</h1>
+            <span class="meta">
+            	Posted on
+              10-31 2019，1 min read
+            </span>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- Post Content -->
+  <article>
     <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-       
-        <div class="post-preview">
-          <a href="https://AnCIity.github.io/post/vue-attr">
-            <h2 class="post-title">
-              Vue - 实例常用属性
-            </h2>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h2 id="git-推送已有项目到远程仓库">Git - 推送已有项目到远程仓库</h2>
+<blockquote>
+<p>提示：</p>
+<p>在GitHub中新建好仓库</p>
+</blockquote>
+<blockquote>
+<p>配置用户信息（已配置过，则忽略）</p>
+</blockquote>
+<pre><code class="language-shell">git config --global user.name 'AnCIity'
+git config --global user.email 'city@nanzc.com'
+</code></pre>
+<blockquote>
+<p>初始化git</p>
+</blockquote>
+<pre><code class="language-shell">git init
+</code></pre>
+<blockquote>
+<p>关联网络仓库</p>
+</blockquote>
+<pre><code class="language-shell">git remote add origin &lt;新建的仓库地址&gt;
+</code></pre>
+<blockquote>
+<p>添加到暂存区</p>
+</blockquote>
+<pre><code class="language-shell">git add .
+</code></pre>
+<blockquote>
+<p>把文件提交到仓库，引号内为提交说明</p>
+</blockquote>
+<pre><code class="language-shell">git commit -m ''
+</code></pre>
+<blockquote>
+<p>获取远程库与本地同步合并</p>
+</blockquote>
+<pre><code class="language-shell">git pull --rebase origin master
+</code></pre>
+<blockquote>
+<p>推送到远程仓库</p>
+</blockquote>
+<pre><code class="language-shell">git push -u origin master
+</code></pre>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://AnCIity.github.io/post/git-brief">
+              <span class="post-title">
+                Git - 简要指南
+              </span>
             </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">11-01 2019</span>
-             <span>,</span>
-             <span class="post-stats">2 min read</span>
-            </p>
-        </div>
-        <hr>
-        <div class="clearfix">
-        </div>
+          </p>
         
-        <div class="post-preview">
-          <a href="https://AnCIity.github.io/post/vue-package-axios">
-            <h2 class="post-title">
-              Vue - 封装axios
-            </h2>
-            </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">10-26 2019</span>
-             <span>,</span>
-             <span class="post-stats">1 min read</span>
-            </p>
+        <div class="comment">
+          
         </div>
-        <hr>
-        <div class="clearfix">
-        </div>
-        
-        
-        
       </div>
     </div>
-  </div>
-
-  
+  </article>
  <!-- Footer -->
   <footer>
     <div class="container">
@@ -193,3 +214,4 @@
   })(this));</script>
   </body>
 </html>
+
