@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnCIity.github.io</id>
     <title>AnBlog</title>
-    <updated>2019-11-01T07:59:47.109Z</updated>
+    <updated>2019-11-01T08:16:43.911Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnCIity.github.io"/>
     <link rel="self" href="https://AnCIity.github.io/atom.xml"/>
@@ -22,12 +22,11 @@
 <p>注意：独立的vue文件需要引入less</p>
 <pre><code class="language-css">&lt;style lang=&quot;less&quot;&gt;&lt;/style&gt;
 </code></pre>
-<p>Vue-cli3X</p>
-<h5 id="配置less全局变量">配置Less全局变量</h5>
-<p>先备份下vue.config.js文件  可能出现原配置丢失</p>
-<pre><code class="language-sh">vue add style-resources-loader
-</code></pre>
-<p>配置参考：vue.config.js</p>
+<h5 id="配置全局变量">配置全局变量</h5>
+<blockquote>
+<p>Vue-cli3X<br>
+配置参考：vue.config.js</p>
+</blockquote>
 <pre><code class="language-js">const path = require('path');
 module.exports = {
     pluginOptions: {
