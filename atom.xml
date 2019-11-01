@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnCIity.github.io</id>
     <title>AnBlog</title>
-    <updated>2019-11-01T07:57:32.804Z</updated>
+    <updated>2019-11-01T07:59:47.109Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnCIity.github.io"/>
     <link rel="self" href="https://AnCIity.github.io/atom.xml"/>
@@ -10,6 +10,40 @@
     <logo>https://AnCIity.github.io/images/avatar.png</logo>
     <icon>https://AnCIity.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, AnBlog</rights>
+    <entry>
+        <title type="html"><![CDATA[Vue - 配置less环境]]></title>
+        <id>https://AnCIity.github.io/post/vue-less-environment</id>
+        <link href="https://AnCIity.github.io/post/vue-less-environment">
+        </link>
+        <updated>2019-11-01T07:58:00.000Z</updated>
+        <content type="html"><![CDATA[<h5 id="安装less">安装Less</h5>
+<pre><code class="language-shell">npm i less less-loader -S 
+</code></pre>
+<p>注意：独立的vue文件需要引入less</p>
+<pre><code class="language-css">&lt;style lang=&quot;less&quot;&gt;&lt;/style&gt;
+</code></pre>
+<p>Vue-cli3X</p>
+<h5 id="配置less全局变量">配置Less全局变量</h5>
+<p>先备份下vue.config.js文件  可能出现原配置丢失</p>
+<pre><code class="language-sh">vue add style-resources-loader
+</code></pre>
+<p>配置参考：vue.config.js</p>
+<pre><code class="language-js">const path = require('path');
+module.exports = {
+    pluginOptions: {
+        'style-resources-loader': {
+            preProcessor: 'less',
+            patterns: [
+                //这个是加上自己的路径，
+                //注意：试过不能使用别名路径
+                path.resolve(__dirname, 'src/assets/css/theme.less'),
+            ]
+        }
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Vuex - 概论]]></title>
         <id>https://AnCIity.github.io/post/vue-vuex-generality</id>
