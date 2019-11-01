@@ -130,6 +130,26 @@ module.exports = {
         
         <div class="comment">
           
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'caf7c6585a9a2921dd77',
+    clientSecret: 'eb5b2b6cea56c659822adf22c86b35bf90100b07',
+    repo: 'AnCIity.github.io',
+    owner: 'AnCIity',
+    admin: ['AnCIity'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+          
+          
+        
         </div>
       </div>
     </div>
