@@ -7,13 +7,13 @@
   <meta name="description" content="">
   <meta name="author" content="kveln">
   <meta name="keywords" content="">
-  <title>Git - 简要指南 | AnBlog</title>
+  <title>ES6 - 模块化 | AnBlog</title>
   <link href="https://AnCIity.github.io/media/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="https://AnCIity.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="Git - 简要指南 | AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="ES6 - 模块化 | AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
@@ -72,13 +72,13 @@
           <div class="post-heading">
           	<span class="tags">
           	 
-            <a href="https://AnCIity.github.io/tag/PjrnQSyr9/" class="tag">Git</a>
+            <a href="https://AnCIity.github.io/tag/ES6/" class="tag">ES6</a>
             
         </span>
-            <h1>Git - 简要指南</h1>
+            <h1>ES6 - 模块化</h1>
             <span class="meta">
             	Posted on
-              10-31 2019，3 min read
+              03-16 2020，4 min read
             </span>
           </div>
         </div>
@@ -91,167 +91,185 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <h1 id="git-简要指南">Git - 简要指南</h1>
+          <h1 id="es6模块化">ES6模块化</h1>
 <hr>
 <blockquote>
-<p>参数：</p>
+<p><code>Organized by</code>：<strong>安南</strong> <code>City</code></p>
+<p><code>Completion time</code>：<code>2020-03-16</code></p>
+<p><code>Send error to email</code>：<a href="mailto:city@nanzc.com" title="send error to email">city@nanzc.com</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>在<code>ES6</code>模块化规范诞生之前，Javascript 社区已经尝试并提出了<code>AMD</code>、<code>CMD</code>、<code>CommonJS</code> 等模块化规范。</p>
+<p>但是，这些社区提出的模块化标准，还是存在一定的<strong>差异性</strong>与<strong>局限性</strong>、<strong>并不是</strong>浏览器与服务器<strong>通用的模块化标</strong></p>
+<p><strong>准</strong>，例如：</p>
 <ul>
-<li><strong>username:</strong>    用户名</li>
-<li><strong>email:</strong>    邮箱</li>
-<li><strong>repo:</strong>    Git 仓库</li>
-<li><strong>branch:</strong>    分支</li>
-<li><strong>directory:</strong>    本地目录</li>
-<li><strong>filename:</strong>    文件名</li>
+<li><code>AMD</code>和<code>CMD</code>适用于浏览器端的<code>Javascript</code>模块化</li>
+<li><code>CommonJS</code>适用于服务器端的<code>Javascript</code>模块化</li>
+</ul>
+<p>因此，<code>ES6</code>语法规范中，在语言层面上定义了<code>ES6</code>模块化规范，是浏览器端与服务器端通用的模块化开发规范。</p>
+<p><code>定义</code>：</p>
+<ul>
+<li>每个 js 文件都是一个独立的模块</li>
+<li><strong>导入模块成员</strong>使用<code>import</code>关键字</li>
+<li><strong>暴露模块成员</strong>使用<code>export</code>关键字</li>
 </ul>
 </blockquote>
-<h3 id="创建新仓库">创建新仓库</h3>
+<h3 id="在nodejs中使用babel体验es6模块化">在Node.js中使用babel体验ES6模块化</h3>
+<hr>
 <blockquote>
-<p>创建新文件夹并打开</p>
+<p>由于<code>Node.js</code>并不支持<code>ES6</code>模块化相关操作，我们需要通过<code>babel</code>进行语法转换。</p>
 </blockquote>
-<pre><code class="language-shell">git init
+<ul>
+<li>
+<p>安装相关开发环境</p>
+<pre><code class="language-shell">npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/node
 </code></pre>
-<h3 id="配置仓库">配置仓库</h3>
-<blockquote>
-<p>全局设置（已配置忽略）</p>
-</blockquote>
-<pre><code class="language-shell">git config --global user.name '&lt;username&gt;'
-git config --global user.email '&lt;email&gt;'
+</li>
+<li>
+<p>安装项目相关依赖</p>
+<pre><code class="language-shell">npm install --save @babel/polyfill
 </code></pre>
-<blockquote>
-<p>关联远程仓库</p>
-</blockquote>
-<pre><code class="language-shell">git remote add origin &lt;repo&gt;
+</li>
+<li>
+<p>在项目根目录创建文件：<code>babel.config.js</code></p>
+<pre><code class="language-javascript">const presets = [
+    [&quot;@babel/env&quot;, {
+        targets: {
+            edge: &quot;17&quot;,
+            firefox: &quot;60&quot;,
+            chrome: &quot;67&quot;,
+            safari: &quot;11.1&quot;
+        }
+    }]
+]
+module.exports = { presets }
 </code></pre>
-<blockquote>
-<p>删除关联仓库</p>
-</blockquote>
-<pre><code class="language-shell">git remote remove origin
+</li>
+<li>
+<p>运行文件</p>
+<pre><code class="language-shell">npx babel-node 文件名
 </code></pre>
-<h3 id="检出仓库">检出仓库</h3>
+</li>
+</ul>
+<p> </p>
+<h3 id="默认导入导出">默认导入导出</h3>
+<hr>
 <blockquote>
-<p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+<p>默认导出只能使用一次</p>
+<p><code>export default { value }</code></p>
 </blockquote>
-<pre><code class="language-shell">git clone &lt;directory&gt;
+<pre><code class="language-javascript">// m1.js
+let defaultA = &quot;defaultA&quot;
+let defaultB = function(){
+    console.log(&quot;defaultB&quot;)
+}
+
+export default {
+    defaultA,
+    defaultB
+}
+
+// m2.js
+import defaultAll from './m1'
 </code></pre>
+<p> </p>
+<h3 id="按需导入导出">按需导入导出</h3>
+<hr>
 <blockquote>
-<p>如果是远端服务器上的仓库，你的命令会是这个样子：</p>
+<p>按需导出可以使用多次</p>
+<p><code>export value</code></p>
 </blockquote>
-<pre><code class="language-shell">git clone &lt;repo&gt;
+<pre><code class="language-javascript">// m1.js
+export let needA = &quot;needA&quot;
+
+export let needB = &quot;needB&quot;
+
+export let needC = function(){
+    console.log(&quot;needC&quot;)
+}
+
+// m2.js
+import { needA, needC } form &quot;./m1&quot;
 </code></pre>
-<h3 id="工作流">工作流</h3>
+<p> </p>
+<h3 id="默认和按需结合使用时">默认和按需结合使用时</h3>
+<hr>
 <blockquote>
-<p><code>工作区</code>：是你的工作目录，它持有实际文件</p>
-<p><code>暂存区（Index）</code>：它像个缓存区域，临时保存你的改动</p>
-<p><code>HEAD</code>：它指向你最后一次提交的结果</p>
+<p>在我们同时使用默认导出和按需导出时，导入时使用逗号分割即可。</p>
 </blockquote>
-<figure data-type="image" tabindex="1"><img src="https://AnCIity.github.io/post-images/1572505828915.jpg" alt="" loading="lazy"></figure>
-<h3 id="添加和提交">添加和提交</h3>
-<blockquote>
-<p>添加到暂存区<code>index</code></p>
-</blockquote>
-<pre><code class="language-shell">git add &lt;filename&gt;
-git add *
+<pre><code class="language-javascript">// m1.js
+let defaultA = &quot;defaultA&quot;
+let defaultB = function(){
+    console.log(&quot;defaultB&quot;)
+}
+// 默认导出
+export default {
+    defaultA,
+    defaultB
+}
+
+// 按需导出
+export let needA = &quot;needA&quot;
+export let needB = &quot;needB&quot;
+export let needC = function(){
+    console.log(&quot;needC&quot;)
+}
+
+// m2.js
+import defaultAll, { needA, needC } from './m1'
 </code></pre>
+<p> </p>
+<h3 id="导入重命名">导入重命名</h3>
+<hr>
 <blockquote>
-<p>提交改动至本地仓库<code>HEAD</code></p>
+<p>在导入模块时，会遇见模块变量重名的情况，那么怎么解决它呢？</p>
+<p>这个时候可以用到我们的<code>as</code>关键字</p>
 </blockquote>
-<pre><code class="language-shell">git commit -m &quot;代码提交信息&quot;
+<pre><code class="language-javascript">// m1.js
+export let needA = &quot;needA&quot;
+
+export let needB = &quot;needB&quot;
+
+export let needC = function(){
+    console.log(&quot;needC&quot;)
+}
+
+// m2.js
+import { needA as needRename, needC } form &quot;./m1&quot;
+// 例如此时模块内已存在needA变量，所以可以使用as重命名导入变量名为needRename。
+let needA = &quot;已存在变量needA&quot;
 </code></pre>
-<h3 id="推送改动">推送改动</h3>
+<p> </p>
+<h3 id="导入一个空模块时">导入一个空模块时</h3>
+<hr>
 <blockquote>
-<p>提交到远程仓库</p>
+<p>我们无需担心导入一个未暴露任何变量的模块时会出错。</p>
+<p>因为当导入一个空模块时，系统默认返回一个空对象<code>{}</code></p>
 </blockquote>
-<pre><code class="language-shell">git push origin &lt;branch&gt;
-</code></pre>
+<p> </p>
+<h3 id="直接导入并执行模块代码">直接导入并执行模块代码</h3>
+<hr>
 <blockquote>
-<p>项目已存在</p>
-<p>需先获取远程库与本地同步合并</p>
+<p>在我们只想执行模块内的代码，却不想导入模块内的变量时</p>
 </blockquote>
-<pre><code class="language-shell">git pull --rebase origin &lt;branch&gt;
+<pre><code class="language-javascript">// m1.js
+for (let i = 0; i &lt; 3; i++) {
+    console.log(i);
+}
+
+// m2.js
+import './m2'
+// 导入的模块内部代码会自动执行
 </code></pre>
-<h3 id="分支">分支</h3>
-<blockquote>
-<p>创建分支</p>
-</blockquote>
-<pre><code class="language-shell">git branch
-</code></pre>
-<blockquote>
-<p>删除分支</p>
-</blockquote>
-<pre><code class="language-shell">git branch -d &lt;branch&gt;
-</code></pre>
-<blockquote>
-<p>查看分支</p>
-</blockquote>
-<pre><code class="language-shell">git branch # 本地
-git branch -r # 远程
-git branch -a # 所有
-</code></pre>
-<blockquote>
-<p>切换分支</p>
-</blockquote>
-<pre><code class="language-shell">git checkout &lt;branch&gt;
-</code></pre>
-<blockquote>
-<p>推送分支</p>
-</blockquote>
-<pre><code class="language-shell">git push origin &lt;branch&gt;
-</code></pre>
-<h3 id="更新与合并">更新与合并</h3>
-<blockquote>
-<p>更新本地仓库至最新改动</p>
-</blockquote>
-<pre><code class="language-shell">git pull
-</code></pre>
-<blockquote>
-<p>获取远程库与本地同步合并</p>
-</blockquote>
-<pre><code class="language-shell">git pull --rebase origin &lt;branch&gt;
-</code></pre>
-<blockquote>
-<p>合并其他分支到你的当前分支</p>
-</blockquote>
-<pre><code class="language-shell">git merge &lt;branch&gt;
-</code></pre>
-<blockquote>
-<p>手动合并冲突</p>
-</blockquote>
-<pre><code class="language-shell">git add &lt;filename&gt;
-</code></pre>
-<blockquote>
-<p>预览差异</p>
-</blockquote>
-<pre><code class="language-shell">git diff &lt;source_branch&gt; &lt;target_branch&gt; # 原分支 目标分支
-</code></pre>
-<h3 id="实用小贴士">实用小贴士</h3>
-<blockquote>
-<p>内建的图形化 Git</p>
-</blockquote>
-<pre><code class="language-shell">gitk
-</code></pre>
-<blockquote>
-<p>彩色的 git 输出</p>
-</blockquote>
-<pre><code class="language-shell">git config color.ui true
-</code></pre>
-<blockquote>
-<p>显示历史记录时，每个提交的信息只显示一行</p>
-</blockquote>
-<pre><code class="language-shell">git config format.pretty oneline
-</code></pre>
-<blockquote>
-<p>交互式添加文件到暂存区</p>
-</blockquote>
-<pre><code class="language-shell">git add -i
-</code></pre>
-<h3 id="常用命令速查表">常用命令速查表</h3>
-<figure data-type="image" tabindex="2"><img src="https://AnCIity.github.io/post-images/1572505842313.png" alt="" loading="lazy"></figure>
+<p> </p>
+<p> </p>
 
           
           <p class="next-post">下一篇：
-            <a href="https://AnCIity.github.io/post/vue-api-module/">
+            <a href="https://AnCIity.github.io/post/node-mongodb/">
               <span class="post-title">
-                Vue - Api接口模块化
+                Node操作原生mongodb模块
               </span>
             </a>
           </p>

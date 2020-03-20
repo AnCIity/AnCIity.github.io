@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="referrer" content="never">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <meta name="keywords" content="">
+  <title>Node操作原生mongodb模块 | AnBlog</title>
+  <link href="https://AnCIity.github.io/media/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://AnCIity.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="Node操作原生mongodb模块 | AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <script src="https://AnCIity.github.io/media/scripts/jquery.min.js"></script>
+  <link href="https://AnCIity.github.io/styles/main.css" rel="stylesheet">
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://AnCIity.github.io">AnBlog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/archives">归档</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/post/about">关于</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://AnCIity.github.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+            <a href="https://AnCIity.github.io/tag/sql/" class="tag">SQL</a>
+            
+            <a href="https://AnCIity.github.io/tag/node/" class="tag">Node</a>
+            
+            <a href="https://AnCIity.github.io/tag/mongodb/" class="tag">Mongodb</a>
+            
+        </span>
+            <h1>Node操作原生mongodb模块</h1>
+            <span class="meta">
+            	Posted on
+              03-14 2020，9 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 id="node操作原生mongodb模块">Node操作原生mongodb模块</h1>
+<hr>
+<blockquote>
+<p><code>Organized by</code>：<strong>安南</strong> <code>City</code></p>
+<p><code>Completion time</code>：<code>2020-03-14</code></p>
+<p><code>Send error to email</code>：<a href="mailto:city@nanzc.com" title="send to email">city@nanzc.com</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><code>MongoDB</code> 是一个<strong>基于分布式文件存储</strong>的数据库。由 C++ 语言编写。旨在为 WEB 应用<strong>提供可扩展的高性能数据存储解决方案</strong>。</p>
+<p><code>MongoDB</code> 是一个<strong>介于关系数据库和非关系数据库之间</strong>的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
+<p><code>Node</code>原生的<code>MongoDB</code>驱动：<code>mongodb</code>模块</p>
+</blockquote>
+<p> </p>
+<h3 id="安装驱动">安装驱动</h3>
+<hr>
+<blockquote>
+<p>在当前项目安装<code>mongodb</code>驱动模块</p>
+</blockquote>
+<pre><code class="language-shell">npm install mongodb
+</code></pre>
+<p> </p>
+<h3 id="连接数据库">连接数据库</h3>
+<hr>
+<blockquote>
+<p>首先创建一个<code>MongoClient</code>对象，然后配置好<code>地址</code>和<code>端口</code>以及<code>数据库</code> ，默认端口可省略。</p>
+<p>如果数据库不存在，<code>MongoDB</code>将创建数据库并建立连接。</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+// mongodb://host:port/db
+MongoClient.connect('mongodb://localhost:27017/stu', { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err; // 如果发生错误，抛出错误
+    console.log(&quot;连接成功&quot;);
+    // 关闭数据库
+    db.close();
+})
+</code></pre>
+<p> </p>
+<h3 id="创建集合">创建集合</h3>
+<hr>
+<blockquote>
+<p><code>createCollection()</code>：创建一个集合。</p>
+<p>在未创建集合的情况下使用集合，集合将会自动创建。</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+// 如果数据库不存在，将会隐式创建
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err; // 如果发生错误，抛出错误
+
+    // 选择数据库 blog
+    let dbase = db.db(&quot;blog&quot;);
+
+    // 主动创建集合
+    dbase.createCollection(&quot;filing&quot;, (err, res) =&gt; {
+        if (err) throw err;
+        
+        console.log(&quot;创建集合&quot;);
+        
+        // 关闭数据库
+        db.close();
+    })
+})
+</code></pre>
+<p> </p>
+<h3 id="删除集合">删除集合</h3>
+<hr>
+<blockquote>
+<p><code>collection()</code>：选择集合。</p>
+<p><code>drop</code>：删除集合。</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+
+    // 选择数据库 blog
+    let dbase = db.db(&quot;blog&quot;);
+
+    // collection()选择集合，drop()删除集合
+    dbase.collection(&quot;filing&quot;).drop((err, delOK) =&gt; {
+        if (err) throw err;
+
+        if (delOK) console.log(&quot;集合已删除&quot;);
+
+        db.close();
+    })
+})
+</code></pre>
+<p> </p>
+<h2 id="数据库操作-curd">数据库操作( CURD )</h2>
+<hr>
+<blockquote>
+<p>接下来我们将学习数据库的增删改查操作。</p>
+<p>与<code>MySQL</code>不同的是**<code>MongoDB</code>会自动创建数据库和集合**，所以使用前我们不需要手动去创建。</p>
+</blockquote>
+<p> </p>
+<h3 id="插入文档">插入文档</h3>
+<hr>
+<blockquote>
+<p><code>insertOne({insert data}, callback)</code>：插入一条数据</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+	let dbase = db.db(&quot;blog&quot;);
+
+    let insertData = { name: &quot;南之城&quot;, url: &quot;nanzc.com&quot;, rank: &quot;1&quot; };
+    dbase.collection(&quot;filing&quot;).insertOne(insertData, (err, res) =&gt; {
+        if (err) throw err;
+        
+        console.log(&quot;插入文档成功&quot;);
+
+        db.close();
+    })
+})
+</code></pre>
+<blockquote>
+<p><code>insertOne([{insert data},...], callback)</code>：插入多条数据</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+    let dbase = db.db(&quot;blog&quot;);
+
+    let insData = [
+        { name: &quot;南之城&quot;, url: &quot;nanzc.com&quot;, rank: &quot;3&quot; },
+        { name: &quot;百度&quot;, url: &quot;baidu.com&quot;, rank: &quot;5&quot; },
+        { name: &quot;南之城&quot;, url: &quot;nanzc.com&quot;, rank: &quot;1&quot; },
+        { name: &quot;谷歌&quot;, url: &quot;google.com&quot;, rank: &quot;4&quot; },
+        { name: &quot;谷歌&quot;, url: &quot;google.com&quot;, rank: &quot;2&quot; }
+    ];
+    dbase.collection(&quot;filing&quot;).insertMany(insData, (err, res) =&gt; {
+        if (err) throw err;
+        
+        console.log(&quot;插入的文档数量为: &quot;, res.insertedCount);
+
+        db.close();
+    })
+})
+</code></pre>
+<p> </p>
+<h3 id="查询文档">查询文档</h3>
+<hr>
+<blockquote>
+<p><code>find({ })</code>：查询文档，返回匹配条件的所有文档</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+    let dbase = db.db(&quot;blog&quot;);
+
+    // 查询所有文档，不指定条件即可
+    dbase.collection(&quot;filing&quot;).find({}).toArray((err, res) =&gt; {
+        if (err) throw err;
+        
+        console.log(&quot;查询所有文档：&quot;, res);
+        
+        // db.close();
+    })
+
+    // 查询指定条件文档
+    dbase.collection(&quot;filing&quot;).find({ name: &quot;南之城&quot; }).toArray((err, res) =&gt; {
+        if (err) throw err;
+        
+        console.log(&quot;指定条件文档：&quot;, res);
+        
+        // db.close();
+    })
+})
+</code></pre>
+<p> </p>
+<h3 id="更新文档">更新文档</h3>
+<hr>
+<blockquote>
+<p><code>updateOne({ }, {$: { }}, callback)</code>：更新一条文档</p>
+<p><code>updateMany({ }, {$: { }}, callback)</code>：更新符合条件的所有文档</p>
+<p><code>update</code>：需要包含<code>原子操作符</code>，如<code>$set</code></p>
+<p>https://www.runoob.com/mongodb/mongodb-atomic-operations.html（参考）</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+    let dbase = db.db(&quot;blog&quot;);
+
+    // 只会更新一条文档
+    dbase.collection(&quot;filing&quot;).updateOne({ name: &quot;南之城&quot; }, { $set: { url: &quot;www.nanzc.com&quot; } }, (err, res) =&gt; {
+        if (err) throw err;
+        
+        console.log(&quot;文档更新成功&quot;);
+        
+        // db.close();
+    })
+
+    // 更新符合条件的所有数据
+    dbase.collection(&quot;filing&quot;).updateMany({ name: &quot;谷歌&quot; }, { $set: { url: &quot;www.google.com&quot; } }, (err, res) =&gt; {
+        if (err) throw err;
+        
+        console.log(res.result.nModified + &quot; 条文档被更新&quot;);
+        
+        // db.close();
+    });
+})
+</code></pre>
+<p> </p>
+<h3 id="删除文档">删除文档</h3>
+<hr>
+<blockquote>
+<p><code>deleteOne({ }, callback)</code>：删除一条文档</p>
+<p><code>deleteMany({ }, callback)</code>：删除符合条件的所有文档</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+    let dbase = db.db(&quot;blog&quot;);
+
+    // 删除一条文档
+    dbase.collection(&quot;site&quot;).deleteOne({ name: &quot;谷歌&quot; }, (err, obj) =&gt; {
+        if (err) throw err;
+        
+        console.log(&quot;文档删除成功&quot;);
+        
+        // db.close();
+    });
+
+    // 删除符合条件所有文档
+    dbase.collection(&quot;site&quot;).deleteMany({ name: &quot;谷歌&quot; }, (err, obj) =&gt; {
+        if (err) throw err;
+        
+        console.log(obj.result.n + &quot; 条文档被删除&quot;);
+        
+        /// db.close();
+    });
+})
+</code></pre>
+<p> </p>
+<h2 id="数据库功能">数据库功能</h2>
+<hr>
+<blockquote>
+<p>接下来介绍数据库功能性操作<code>API</code>。</p>
+</blockquote>
+<p> </p>
+<h3 id="排序">排序</h3>
+<hr>
+<blockquote>
+<p><code>sort({ })</code>：将数据排序</p>
+<p><code>{fieldName: 1/-1}</code>：排序方式，升序<code>1</code>，降序<code>-1</code></p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+    let dbase = db.db(&quot;blog&quot;);
+
+    // { rank: 1 }  // 按 rank 字段升序
+    // { rank: -1 } // 按 rank 字段降序
+    dbase.collection(&quot;filing&quot;).find().sort({ rank: 1 }).toArray((err, result) =&gt; {
+        if (err) throw err;
+        
+        console.log(result);
+
+        db.close();
+    })
+})
+</code></pre>
+<p> </p>
+<h3 id="查询分页">查询分页</h3>
+<hr>
+<blockquote>
+<p><code>limit(num: Number)</code>：指定的<strong>返回</strong>条数</p>
+<p><code>skip(num: Number)</code>：指定的<strong>跳过</strong>条数</p>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+
+    let dbase = db.db(&quot;blog&quot;);
+
+    // 指定的返回条数
+    dbase.collection(&quot;filing&quot;).find().limit(2).toArray((err, result) =&gt; {
+        if (err) throw err;
+
+        console.log(result);
+        
+        // db.close();
+    })
+
+    // 返回跳过2条后的2条数据
+    dbase.collection(&quot;filing&quot;).find().skip(2).limit(2).toArray((err, result) =&gt; {
+        if (err) throw err;
+
+        console.log(result);
+
+        // db.close();
+    })
+})
+</code></pre>
+<p> </p>
+<h3 id="左连接">左连接</h3>
+<hr>
+<blockquote>
+<p><code>MongoDB</code>不是一个关系型数据库，但我们可以使用<code>$lookup</code>来实现<strong>左连接</strong>。</p>
+<p>假设我们有两个集合：</p>
+<p><code>orders</code>：</p>
+<pre><code class="language-json">[
+{ _id: 1, product_id: 154, status: 1 }
+]
+</code></pre>
+<p><code>products</code>：</p>
+<pre><code class="language-json">[
+{ _id: 154, name: '笔记本电脑' },
+{ _id: 155, name: '耳机' },
+{ _id: 156, name: '台式电脑' }
+]
+</code></pre>
+</blockquote>
+<pre><code class="language-javascript">const MongoClient = require(&quot;mongodb&quot;).MongoClient;
+
+MongoClient.connect(&quot;mongodb://localhost/blog&quot;, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) =&gt; {
+    if (err) throw err;
+    let dbase = db.db(&quot;blog&quot;);
+
+    // 操作左集合
+    dbase.collection('orders').aggregate([
+        {
+            $lookup:
+            {
+                from: 'products',            // 右集合：连接集合名
+                localField: 'product_id',    // 左集合 join 字段：自身字段
+                foreignField: '_id',         // 右集合 join 字段：连接字段
+                as: 'orderdetails'           // 新生成字段（类型array）：生成数据字段
+            }
+        }
+    ]).toArray(function (err, res) {
+        if (err) throw err;
+
+        console.log(JSON.stringify(res));
+        // [{&quot;_id&quot;:1,&quot;product_id&quot;:154,&quot;status&quot;:1,&quot;orderdetails&quot;:[{&quot;_id&quot;:154,&quot;name&quot;:&quot;笔记本电脑&quot;}]}]
+
+        db.close();
+    });
+})
+</code></pre>
+<p> </p>
+<h2 id="推荐使用mongoose">推荐使用Mongoose</h2>
+<hr>
+<blockquote>
+<p><code>原由</code>： 让我们面对这样的困境，<strong>编写MongoDB验证，转换和业务逻辑是非常麻烦的</strong>。</p>
+<p><code>Mongoose</code>：为模型提供了一种直接的，基于scheme结构去定义你的数据模型。它内置数据验证， 查询构建，业务逻辑钩子等，开箱即用。</p>
+<p><code>side</code>： http://www.mongoosejs.net/</p>
+</blockquote>
+<p> </p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://AnCIity.github.io/post/computer-theory/">
+              <span class="post-title">
+                计算机原理
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'caf7c6585a9a2921dd77',
+    clientSecret: 'eb5b2b6cea56c659822adf22c86b35bf90100b07',
+    repo: 'AnCIity.github.io',
+    owner: 'AnCIity',
+    admin: ['AnCIity'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+          
+          
+        
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://AnCIity.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>AnBlog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://AnCIity.github.io/media/scripts/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://AnCIity.github.io/media/scripts/clean-blog.min.js"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+

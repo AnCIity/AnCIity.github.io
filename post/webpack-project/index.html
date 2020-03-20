@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="referrer" content="never">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <meta name="keywords" content="">
+  <title>Webpack - 前端工程化 | AnBlog</title>
+  <link href="https://AnCIity.github.io/media/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://AnCIity.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="Webpack - 前端工程化 | AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <script src="https://AnCIity.github.io/media/scripts/jquery.min.js"></script>
+  <link href="https://AnCIity.github.io/styles/main.css" rel="stylesheet">
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://AnCIity.github.io">AnBlog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/archives">归档</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/post/about">关于</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://AnCIity.github.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+            <a href="https://AnCIity.github.io/tag/webpack/" class="tag">Webpack</a>
+            
+        </span>
+            <h1>Webpack - 前端工程化</h1>
+            <span class="meta">
+            	Posted on
+              03-19 2020，9 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 id="webpack-前端工程化">Webpack-前端工程化</h1>
+<hr>
+<blockquote>
+<p><code>Organized by</code>：<strong>安南</strong> <code>City</code></p>
+<p><code>Completion time</code>：<code>2020-03-19</code></p>
+<p><code>Send error to email</code>：<a href="mailto:city@nanzc.com" title="send to email">city@nanzc.com</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><code>Webpack</code>：<code>让一切变得简单</code></p>
+<blockquote>
+<p>是一个流行的前端项目构建工具（打包工具）。</p>
+</blockquote>
+<p><code>作用</code>：</p>
+<blockquote>
+<p>可以解决当前 Web 开发中所面临的困境。</p>
+</blockquote>
+<p><code>webpack</code>提供了友好的模块化支持，以及代码压缩混淆、处理<code>js</code>兼容问题、性能优化等强大的功能，从而让程序员 <strong>把工作的重心放到具体的功能实现上，提高了开发效率和项目的可维护性</strong>。</p>
+</blockquote>
+<p> </p>
+<p>当前 Web 开发面临的困境</p>
+<hr>
+<blockquote>
+<ul>
+<li>文件依赖关系错综复杂</li>
+<li>静态资源请求效率低</li>
+<li>模块化支持不友好</li>
+<li>浏览器对高级Javascript 特性兼容程度较低</li>
+<li>etc…</li>
+</ul>
+</blockquote>
+<p> </p>
+<h2 id="webpack-项目">Webpack 项目</h2>
+<hr>
+<blockquote>
+<p>那么了解了<code>Webpack</code>因何而存在，接下来就开始创建<code>Webpack</code>项目吧。</p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>新建项目空白目录</p>
+</li>
+<li>
+<p>运行命令，初始化包管理配置文件<code>package.json</code></p>
+<pre><code class="language-shell">npm init –y
+</code></pre>
+</li>
+<li>
+<p>新建<code>src</code>源代码目录</p>
+</li>
+<li>
+<p>新建<code>src =&gt; index.html</code>：首页</p>
+</li>
+<li>
+<p>初始化首页基本结构</p>
+</li>
+<li>
+<p>创建入口文件<code>src =&gt; index.js</code></p>
+</li>
+</ul>
+<p> </p>
+<h2 id="安装和配置">安装和配置</h2>
+<hr>
+<blockquote>
+<p>接下来让我们在项目中开始安装<code>webpack</code></p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装<code>webpack</code>相关的包</p>
+<pre><code class="language-shell">npm install webpack webpack-cli –D
+</code></pre>
+</li>
+<li>
+<p>在项目根目录中创建<code>webpack</code>配置文件：<code>webpack.config.js</code></p>
+<pre><code class="language-js">// webpack.config.js
+
+module.exports = {
+    // 指定构建模式
+    // value：development-不会压缩不会混淆; production-压缩并混淆
+    mode: &quot;development&quot;
+}
+</code></pre>
+</li>
+<li>
+<p>在<code>package.json</code>配置文件中的<code>scripts</code>节点下，新增 dev 脚本如下：</p>
+<pre><code class="language-javascript">// script 节点下的脚本，可以通过 npm run key 执行
+&quot;scripts&quot;: {
+	&quot;dev&quot;: &quot;webpack&quot;
+}
+</code></pre>
+</li>
+<li>
+<p>打包<code>Webpack</code></p>
+<pre><code class="language-shell">npm run dev
+</code></pre>
+</li>
+</ul>
+<p> </p>
+<h3 id="入口和出口">入口和出口</h3>
+<hr>
+<blockquote>
+<p>打包的默认约定：</p>
+<p><strong>入口文件</strong>：<code>src</code> =&gt; <code>index.js</code></p>
+<p><strong>出口文件</strong>：<code>dist</code> =&gt; <code>main.js</code></p>
+</blockquote>
+<p> </p>
+<blockquote>
+<p>接下来，我们看下如何修改打包的入口和出口：</p>
+</blockquote>
+<pre><code class="language-javascript">// webpack.config.js
+
+const path = require(&quot;path&quot;); // 引入路径处理模块
+
+module.exports = {
+    // ...
+    // 入口文件路径
+    entry: path.join(__dirname, &quot;./src/index.js&quot;),
+    // 出口
+    output: {
+        // 路径
+        path: path.join(__dirname, &quot;./dist&quot;),
+        // 文件名
+        filename: &quot;bundle.js&quot;
+    }
+};
+</code></pre>
+<p> </p>
+<h3 id="自动打包">自动打包</h3>
+<hr>
+<blockquote>
+<p>在修改完项目后，总是需要重新打包，那么如何自动打包呢？</p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装支持项目自动打包的工具</p>
+<pre><code class="language-shell">npm install webpack-dev-server –D
+</code></pre>
+</li>
+<li>
+<p>修改<code>package.json =&gt; scripts</code>中的<code>dev</code>命令</p>
+<pre><code class="language-javascript">&quot;scripts&quot;: {
+	&quot;dev&quot;: &quot;webpack-dev-server&quot;
+}
+</code></pre>
+</li>
+<li>
+<p><mark>注意</mark>：打包后的文件在<code>webpack-dev-server</code>启动的http服务器<code>/</code>根目录下，且打包的文件处于内存中，项目下不可见</p>
+<pre><code class="language-html">&lt;!-- 如打包文件名：buldle.js --&gt;
+&lt;!-- 引用时使用 --&gt;
+&lt;script src=&quot;/buldle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>运行命令即可启动自动打包服务器</p>
+<pre><code class="language-shell">npm run dev
+</code></pre>
+</li>
+<li>
+<p>打开服务器默认地址查看：<code>http://localhost:8080</code></p>
+</li>
+</ul>
+<p> </p>
+<blockquote>
+<p>每次都需要手动打开服务器？看完下面的<code>相关配置</code>小结，你的疑惑便可以解决。</p>
+</blockquote>
+<p> </p>
+<h5 id="相关配置">相关配置</h5>
+<hr>
+<blockquote>
+<p>配置自动打包相关的参数，<code>package.json =&gt; scripts =&gt; dev</code></p>
+</blockquote>
+<pre><code class="language-javascript"> // package.json
+
+ // --open 打包完成后自动打开浏览器页面
+ // --host 配置 IP 地址
+ // --port 配置端口
+ &quot;scripts&quot;: { 
+    &quot;dev&quot;: &quot;webpack-dev-server --open --host 127.0.0.1 --port 8888&quot; 
+  }
+</code></pre>
+<p> </p>
+<blockquote>
+<p>虽然可以自动打开浏览器页面了，但是打开的页面却不对。</p>
+<p>这是因为服务器<code>/</code>和项目根目录一致，而预览页面处于<code>src</code>下，那么我们该如何解决？</p>
+</blockquote>
+<p> </p>
+<h3 id="生成预览页面">生成预览页面</h3>
+<hr>
+<blockquote>
+<p>接下来我们使用插件<code>html-webpack-plugin</code>配置项目预览页面</p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装生成预览页面的插件</p>
+<pre><code class="language-shell">npm install html-webpack-plugin –D
+</code></pre>
+</li>
+<li>
+<p>修改<code>webpack.config.js</code>文件头部区域</p>
+<pre><code class="language-javascript">// webpack.config.js
+
+// 导入生成预览页面插件
+const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;);
+
+// 创建插件实例对象
+const htmlPlugin = new HtmlWebpackPlugin({
+    // 指定模板文件
+    template: &quot;./src/index.html&quot;,
+    // 指定生成文件名，文件处于内存中，在目录不显示
+    filename: &quot;index.html&quot;
+});
+
+// ...
+</code></pre>
+</li>
+<li>
+<p>修改<code>webpack.config.js</code>文件中向外暴露的配置对象，新增如下配置节点：</p>
+<pre><code class="language-javascript">// webpack.config.js
+
+// ...
+module.exports = {
+    // ...
+    plugins: [ htmlPlugin] // plugins 数组是webpack 打包期间会用到的一些插件列表
+}
+</code></pre>
+</li>
+<li>
+<p>启动打包服务器查看即可</p>
+</li>
+</ul>
+<p> </p>
+<h2 id="加载器">加载器</h2>
+<hr>
+<blockquote>
+<p>在实际开发过程中，<code>webpack</code>默认只能打包处理以<code>.js</code>后缀名结尾的模块。其他非<code>.js</code>后缀名结尾的模块，webpack 默认处理不了。需要调用 <code>loader</code> 加载器才可以正常打包，否则会报错！</p>
+<p><code>loader</code>加载器可以协助 <code>webpack</code> 打包处理特定的文件模块，比如：</p>
+<ul>
+<li><code>less-loader</code> 可以打包处理 <code>.less</code> 相关的文件</li>
+<li><code>sass-loader</code> 可以打包处理 <code>.scss</code> 相关的文件</li>
+<li><code>url-loader</code> 可以打包处理 <code>css</code> 中与 <code>url 路径</code>相关的文件</li>
+</ul>
+<p>项目选择<code>loader</code>时：<strong>按需选择</strong></p>
+</blockquote>
+<p> </p>
+<h3 id="打包处理-css-文件">打包处理 CSS 文件</h3>
+<hr>
+<blockquote>
+<p>处理<code>.CSS</code>文件</p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装处理<code>.css</code>文件的<code>loader</code></p>
+<pre><code class="language-shell">npm i style-loader css-loader -D
+</code></pre>
+</li>
+<li>
+<p>在<code>webpack.config.js</code>的<code>module =&gt; rules</code>中，添加<code>loader</code>规则</p>
+<pre><code class="language-javascript">// webpack.config.js
+
+// ...
+module.exports = {
+    // ...
+     module: { // 所有第三方文件模块的匹配规则 
+         rules: [ // 多个规则逗号分割
+             // test：匹配的文件类型; use：表示对应要调用的 loader
+             { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+         ]
+     }
+}
+</code></pre>
+<p><mark>注意</mark>：</p>
+<ul>
+<li><code>use</code> 数组中指定的 <code>loader</code> <strong>顺序是固定的</strong></li>
+<li>多个 <code>loader</code> 的调用顺序是：<strong>从后往前调用</strong></li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h3 id="打包处理-less-文件">打包处理 LESS 文件</h3>
+<hr>
+<blockquote>
+<p>处理<code>.less</code>文件</p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装处理<code>.less</code>文件的<code>loader</code></p>
+<pre><code class="language-shell">npm i less-loader less -D
+
+</code></pre>
+</li>
+<li>
+<p>在<code>webpack.config.js</code>的<code>module =&gt; rules</code>中，添加<code>loader</code>规则</p>
+<pre><code class="language-javascript">// webpack.config.js
+
+// ...
+module.exports = {
+    // ...
+     module: { // 所有第三方文件模块的匹配规则 
+         rules: [ // 多个规则逗号分割
+             // test：匹配的文件类型; use：表示对应要调用的 loader
+             { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }
+         ]
+     }
+}
+
+</code></pre>
+</li>
+</ul>
+<p> </p>
+<h3 id="打包处理-scss-文件">打包处理 SCSS 文件</h3>
+<hr>
+<blockquote>
+<p>处理<code>.scss</code>文件</p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装处理<code>.scss</code>文件的<code>loader</code></p>
+<pre><code class="language-shell">npm i sass-loader node-sass -D
+
+</code></pre>
+</li>
+<li>
+<p>在<code>webpack.config.js</code>的<code>module =&gt; rules</code>中，添加<code>loader</code>规则</p>
+<pre><code class="language-javascript">// webpack.config.js
+
+// ...
+module.exports = {
+    // ...
+     module: { // 所有第三方文件模块的匹配规则 
+         rules: [ // 多个规则逗号分割
+             // test：匹配的文件类型; use：表示对应要调用的 loader
+             { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
+         ]
+     }
+}
+
+</code></pre>
+</li>
+</ul>
+<p> </p>
+<h3 id="处理-css-兼容前缀">处理 CSS 兼容前缀</h3>
+<hr>
+<blockquote>
+<p>处理<code>css</code>的兼容性问题，通过自动添加兼容后缀的方式</p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装<code>postcss-loader</code>加载器和<code>autoprefixer</code>自动添加前缀插件</p>
+<pre><code class="language-shell">npm i postcss-loader autoprefixer -D
+
+</code></pre>
+</li>
+<li>
+<p>在项目根目录创建<code>postCSS</code>的配置文件：<code>postcss.config.js</code></p>
+<pre><code class="language-javascript">// postcss.config.js
+
+const autoprefixer = require('autoprefixer') // 导入自动添加前缀的插件
+    module.exports = {
+    	plugins: [ autoprefixer ] // 挂载插件
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>在<code>webpack.config.js</code>的<code>module =&gt; rules</code>中，修改<code>css</code>的<code>loader</code>规则</p>
+<pre><code class="language-javascript">// webpack.config.js
+
+// ...
+module.exports = {
+    // ...
+     module: { // 所有第三方文件模块的匹配规则 
+         rules: [ // 多个规则逗号分割
+             // test：匹配的文件类型; use：表示对应要调用的 loader
+             { test: /\.css$/, use: ['style-loader', 'css-loader', 'postcss-loader'] }
+         ]
+     }
+}
+
+</code></pre>
+</li>
+</ul>
+<p> </p>
+<h3 id="处理样式表中图片和字体文件">处理样式表中图片和字体文件</h3>
+<hr>
+<blockquote>
+<p>打包样式表中的<code>图片</code>和<code>字体文件</code></p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装处理路径和文件的<code>loader</code></p>
+<pre><code class="language-shell">npm i url-loader file-loader -D
+
+</code></pre>
+</li>
+<li>
+<p>在<code>webpack.config.js</code>的<code>module =&gt; rules</code>中，添加<code>loader</code>规则</p>
+<pre><code class="language-javascript">// webpack.config.js
+
+// ...
+module.exports = {
+    // ...
+     module: { // 所有第三方文件模块的匹配规则 
+         rules: [ // 多个规则逗号分割
+             // test：匹配的文件类型; use：表示对应要调用的 loader
+             { 
+                 test: /\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/, 
+                 use: 'url-loader?limit=16940' // ?limit=16940 参数项可不写
+             }
+         ]
+     }
+}
+
+</code></pre>
+<p><code>limit</code>:用来指定图片的大小，单位是字节(byte)，只有小于<code>limit</code>大小的图片，才会被转为<code>base64</code>图片</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="处理-js-高级语法">处理 JS 高级语法</h3>
+<hr>
+<blockquote>
+<p>ES5后的语法支持并不是很好，所以我们可以通过<code>babel</code>插件去处理<code>.js</code>文件，转换语法</p>
+</blockquote>
+<p> </p>
+<ul>
+<li>
+<p>安装<code>babel</code>转换器相关的包</p>
+<pre><code class="language-shell">npm i babel-loader @babel/core @babel/runtime -D
+
+</code></pre>
+</li>
+<li>
+<p>安装<code>babel</code>语法插件相关的包</p>
+<pre><code class="language-shell">npm i @babel/preset-env @babel/plugin-transform-runtime @babel/plugin-proposal-class-properties –D
+
+</code></pre>
+</li>
+<li>
+<p>在根目录中创建<code>babel</code>配置文件<code>babel.config.js</code></p>
+<pre><code class="language-javascript">// babel.config.js
+
+module.exports = {
+     presets: [ '@babel/preset-env' ],
+     plugins: [ '@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties' ]
+ }
+
+</code></pre>
+</li>
+<li>
+<p>在<code>webpack.config.js</code>的<code>module =&gt; rules</code>中，修改<code>css</code>的<code>loader</code>规则</p>
+<pre><code class="language-javascript">// webpack.config.js
+
+// ...
+module.exports = {
+    // ...
+     module: { // 所有第三方文件模块的匹配规则 
+         rules: [ // 多个规则逗号分割
+             // test：匹配的文件类型; use：表示对应要调用的 loader
+             { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ }
+             // exclude 为排除项，表示 babel-loader 不需要处理 node_modules 中的 js 文件
+         ]
+     }
+}
+
+</code></pre>
+</li>
+</ul>
+<p> </p>
+<p> </p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://AnCIity.github.io/post/es6-module/">
+              <span class="post-title">
+                ES6 - 模块化
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'caf7c6585a9a2921dd77',
+    clientSecret: 'eb5b2b6cea56c659822adf22c86b35bf90100b07',
+    repo: 'AnCIity.github.io',
+    owner: 'AnCIity',
+    admin: ['AnCIity'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+          
+          
+        
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://AnCIity.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>AnBlog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://AnCIity.github.io/media/scripts/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://AnCIity.github.io/media/scripts/clean-blog.min.js"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+

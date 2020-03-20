@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="referrer" content="never">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <meta name="keywords" content="">
+  <title>计算机原理 | AnBlog</title>
+  <link href="https://AnCIity.github.io/media/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://AnCIity.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="计算机原理 | AnBlog » Feed" href="https://AnCIity.github.io/atom.xml">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <script src="https://AnCIity.github.io/media/scripts/jquery.min.js"></script>
+  <link href="https://AnCIity.github.io/styles/main.css" rel="stylesheet">
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://AnCIity.github.io">AnBlog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/archives">归档</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/post/about">关于</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://AnCIity.github.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+            <a href="https://AnCIity.github.io/tag/computers/" class="tag">Computers</a>
+            
+        </span>
+            <h1>计算机原理</h1>
+            <span class="meta">
+            	Posted on
+              03-05 2020，14 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 id="计算机原理">计算机原理</h1>
+<hr>
+<blockquote>
+<p><code>Organized by</code>：<strong>安南</strong> <code>City</code></p>
+<p><code>Completion time</code>：<code>2020-03-05</code></p>
+<p><code>Send error to email</code>：<a href="mailto:city@nanzc.com" title="send to email">city@nanzc.com</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>是现代一种用于高速计算的电子计算机器，可以进行数值计算，又可以进行逻辑计算，还具有存储记忆功能。是能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备。</p>
+<ul>
+<li>**程序自动化：**可将预先编译好的程序组纳入计算机内存，在程序的控制之下，计算机可以连续、自动地工作，不需要人为的干预。</li>
+<li>**高速：**当今计算机的运算速度已经达到每秒万亿次，普通电脑也能达到每秒亿次以上，使大量复杂的科学计算问题能够得以解决。</li>
+</ul>
+<blockquote>
+<p><strong>展现形式</strong>：硬件 =&gt; 系统软件 == 操作系统 =&gt; [ 程序设计语言 ] =&gt; 应用软件 =&gt; 用户</p>
+</blockquote>
+</blockquote>
+<p> </p>
+<h2 id="层次结构">层次结构</h2>
+<hr>
+<blockquote>
+<p>计算机系统层次结构，指的是计算机系统由硬件和软件两大部分所构成，而如果按功能再细分，可分为7层。把计算机系统按功能分为多级层次结构，就是有利于正确理解计算机系统的工作过程，明确软件，硬件在计算机系统中的地位和作用。</p>
+</blockquote>
+<blockquote>
+<p><code>应用软件</code>：</p>
+<p><strong>应用语言级</strong>（应用程序）：</p>
+<p>这一级 是为了使计算机满足某种用途而专门设计的，因此这一级语言就是各种面向问题的应用语言。</p>
+<blockquote>
+<p><code>系统软件</code>：</p>
+<p><strong>高级语言级</strong>（高级语言）：</p>
+<p>这级的机器语言就是各种高级语言， 通常用编译程序来完成高级语言翻译的工作。</p>
+<blockquote>
+<p><strong>汇编语言级</strong>（汇编语言）</p>
+<p>这级的机器语言是汇编语言，完成汇编语言翻译的程序叫做汇编程序。</p>
+<blockquote>
+<p><strong>操作系统级</strong>（操作系统）：</p>
+<p>从操作系统的基本功能来看，一方面它要直接管理传统机器中的软硬件资源，另一方面它又是传统机器的延伸。</p>
+<blockquote>
+<p><code>软硬件分界</code>：</p>
+<p><strong>传统机器级</strong>（机器语言）：</p>
+<p>这级的机器语言是该机的指令集，程序员用机器指令编写的程序可以由微程序进行解释。</p>
+<blockquote>
+<p><code>硬件</code>：</p>
+<p><strong>微程序级</strong>（微程序）：</p>
+<p>这级的机器语言是微指令集，程序员用微指令编写的微程序，一般是直接由硬件执行的。</p>
+<blockquote>
+<p><strong>硬联逻辑级</strong>（硬联逻辑）：</p>
+<p>这是计算机的内核，由门，触发器等逻辑电路组成。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p> </p>
+<h2 id="构成">构成</h2>
+<hr>
+<blockquote>
+<p>计算机的结构发展主要依赖于<strong>冯·诺依曼结构</strong>，以此为基础演变成了<strong>现代计算机</strong>的结构。</p>
+<p>冯·诺依曼结构的要点：</p>
+<ol>
+<li>采用二进制。</li>
+<li><strong>程序存储、顺序执行</strong>。</li>
+<li>计算机由五个部分组成。</li>
+</ol>
+</blockquote>
+<p> </p>
+<h3 id="硬件">硬件</h3>
+<hr>
+<blockquote>
+<ul>
+<li><strong>冯·诺依曼结构</strong>，以<strong>运算器</strong>为中心。
+<ol>
+<li><strong>运算器</strong>： 是负责算术运算与逻辑运算，与控制器共同组成了中央处理器 （CPU）</li>
+<li><strong>控制器</strong>： 负责发送和接收指令</li>
+<li><strong>存储器</strong>： 用来存储程序和各种数据信息的记忆部件</li>
+<li><strong>输入设备</strong>： 用来进行输入的设备。如鼠标、键盘...</li>
+<li><strong>输出设备</strong>： 用来输出的设备。 如显示器、音箱...</li>
+</ol>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>现代计算机</strong>，以<strong>存储器</strong>为中心。
+<ol>
+<li><strong>CPU</strong>（Central Processing Unit，中央处理器）：
+<ul>
+<li>ALU（Arithmetic Logic Unit，算术逻辑单元）</li>
+<li>CU（Control Unit，控制单元）</li>
+</ul>
+</li>
+<li><strong>I/O设备</strong>（受CU控制）</li>
+<li><strong>主存储器</strong>（Main Memory，MM)
+<ul>
+<li>RAM（随机存储器）：又称<strong>内存</strong>， 基于电存储，停电丢失，速度快 --- 随时读写，临时存储</li>
+<li>ROM（只读存储器）：一经写入，无法修改，只能读取。如：BIOS芯片...</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p> </p>
+<h3 id="软件">软件</h3>
+<hr>
+<blockquote>
+<p>软件本身是一堆数据，运行软件时，加载到内存，CPU到内存读取数据，通过运算再显示出来。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>系统软件</strong>：基于硬件</li>
+<li><strong>应用软件</strong>：基于系统软件</li>
+</ul>
+</blockquote>
+<p> </p>
+<h2 id="数据">数据</h2>
+<hr>
+<blockquote>
+<p>计算机采用<strong>二进制</strong>的主要原因：</p>
+<ul>
+<li><strong>技术实现简单</strong>：计算机由逻辑电路组成，只有两个状态，开关的接通和断开，正好对应 1 和 0</li>
+<li><strong>简化运算规则</strong></li>
+<li><strong>适合逻辑运算</strong></li>
+<li><strong>易于进行转换</strong>：二进制与十进制之间易于转换</li>
+<li><strong>抗干扰能力强，可靠性高</strong>等</li>
+</ul>
+</blockquote>
+<p> </p>
+<h2 id="网络">网络</h2>
+<hr>
+<blockquote>
+<p>每台计算机需要互相通讯需要用到网络协议，互联网本质是一系列网络协议</p>
+<p><strong>局域网</strong>： 一种覆盖一座或几座大楼、一个校园或者一个厂区等地理区域的小范围的计算机网。<br>
+<strong>城域网</strong>： 一种界于局域网与广域网之间，覆盖一个城市的地理范围，用来将同一区域内的多个局域网互连起来的中等范围的计算机网。<br>
+<strong>广域网</strong>： 一种用来实现不同地区的局域网或城域网的互连，可提供不同地区、城市和国家之间的计算机通信的远程计算机网。 （ 如：Internet 因特网）</p>
+</blockquote>
+<p> </p>
+<h3 id="osi-七层协议网络标准">OSI 七层协议（网络标准）</h3>
+<hr>
+<blockquote>
+<p>互联网协议按照功能不同分为 OSI 七层 或 TCP/IP 五层 或 TCP/IP 四层 。主要讲解 TCP/IP 五层 。</p>
+<p>对应如下：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>TCP/IP 四层</th>
+<th>TCP/IP 五层</th>
+<th>OSI 七层</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>应用层</td>
+<td>应用层</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>表示层</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>会话层</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>传输层</td>
+<td>传输层</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>网络层</td>
+<td>网络层</td>
+</tr>
+<tr>
+<td>网络接口层</td>
+<td>数据链路层</td>
+<td>数据链路层</td>
+</tr>
+<tr>
+<td></td>
+<td>物理层</td>
+<td>物理层</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="物理层">物理层</h3>
+<hr>
+<blockquote>
+<p><strong>由来</strong>：<code>计算机之间需要用（光缆、电缆、双绞线、无线电波等连接，完成组网，才能通讯</code></p>
+<p><strong>功能</strong>：<strong>主要是基于电器特性发送高低电压（电信号），高电压对应 1，低电压对应 0</strong></p>
+</blockquote>
+<p> </p>
+<h3 id="数据链路层">数据链路层</h3>
+<hr>
+<blockquote>
+<p><strong>由来</strong>：<code>单纯的电信号 0 和 1 没有任何意义，必须规定电信号多少位一组，每组什么意思</code></p>
+<p><strong>功能</strong>：<strong>定义电信号的分组方式</strong></p>
+</blockquote>
+<p> </p>
+<h5 id="以太网协议">以太网协议</h5>
+<hr>
+<blockquote>
+<p>早期时各个公司都有自己的分组方式，后来形成了统一的标准，即以太网协议（ethernet）</p>
+<p><strong>规定</strong>：</p>
+<ul>
+<li>一组点消耗构成一个数据包，叫做 <strong>帧</strong></li>
+<li>每一数据帧分成：<strong>报头 head</strong> 和 <strong>数据 data</strong> 两部分</li>
+</ul>
+<p><strong>head</strong>：(固定18个字节)</p>
+<ul>
+<li>发送者/源地址：6个字节</li>
+<li>接受者/目标地址：6个字节</li>
+<li>数据类型：6个字节</li>
+</ul>
+<p><strong>data</strong>：（最短46个字节，最长1500字节）</p>
+<ul>
+<li>数据包的具体内容</li>
+</ul>
+<p><strong>发送</strong>：head 长度 + data 长度 = 最短 64字节 / 最长<strong>1518字节</strong>，超过最大限制就<strong>分片发送</strong></p>
+<table>
+<thead>
+<tr>
+<th>以太网头</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p> </p>
+<h5 id="mac-地址">MAC 地址</h5>
+<hr>
+<blockquote>
+<p>head 中包含的源和目标地址由来：</p>
+<p><code>ethernet 规定介入 Internet 的设备都必须具备网卡，发送端和接收端的地址便是 MAC 地址，以便能找到发送和接收者</code></p>
+<p><strong>MAC</strong>： 每块网卡出厂时都有一个唯一的 mac地址，长度为 48 位 2进制，通常由 <strong>12 位 16 进制数</strong> 表示</p>
+<p>（<code>前六位是厂商编号，后六位是流水线号</code>）</p>
+</blockquote>
+<p> </p>
+<h5 id="广播">广播</h5>
+<hr>
+<blockquote>
+<p>有了 mac 地址，同一网络内的两台主机就可以互相通讯了（一台主机通过 arp 协议获取另一台主机的mac地址），ethernet 采用最原始的方式，广播的方式进行通讯。</p>
+</blockquote>
+<p> </p>
+<h3 id="网络层">网络层</h3>
+<hr>
+<blockquote>
+<p><strong>由来</strong>：<code>有了</code>以太网协议<code>、</code>MAC 地址<code>、</code>广播<code>的发送方式，理论上世界上的计算机都可以互相通讯了。但是世界上的互联网是由一个个的局域网构成的，如果所有的通讯都是以以太网的广播方式传播，那么一台机器发送，全世界的机器都会收到，这将是一种灾难。于是就有了网络层，定义了一种协议 —— IP 协议。</code></p>
+<p><strong>功能</strong>： <strong>引入一套新的地址用来区分不同的广播域／子网，这套地址即网络地址</strong></p>
+</blockquote>
+<p> </p>
+<h5 id="ip-协议">IP 协议</h5>
+<hr>
+<blockquote>
+<ul>
+<li>规定网络地址的协议叫 ip 协议，定义的地址为 ip 地址， 广泛地采用 v4版本即 ipv4，它规定网络地址由 32 位 2进制表示</li>
+<li>一个 ip 地址通常写成四段十进制数，范围 0.0.0.0 -- 255.255.255.255</li>
+</ul>
+<p><strong>IP地址分成两部分</strong>：</p>
+<ul>
+<li>网络部分：标识子网（前三段）</li>
+<li>主机部分：标识主机（第四段）</li>
+</ul>
+<p><strong>子网掩码</strong>：区分两个IP地址是否在同一子网络。</p>
+<p>方法为将两个IP地址进行<code>AND</code>运算（&amp;）， 然后比较结果是否相同，相同为同一子网，否则不是。</p>
+<p><strong>IP数据包</strong>：</p>
+<p><code>ip数据包也分为head和data部分，无须为ip包定义单独的栏位，直接放入以太网包的data部分</code></p>
+<ul>
+<li><strong>head</strong>：长度为 20 到 60 字节</li>
+<li><strong>data</strong>：最长为 65,515 字节。</li>
+</ul>
+<p>而以太网数据包的<code>data</code>部分，最长只有1500字节。因此，如果IP数据包超过了1500字节，它就需要分割成几个以太网数据包，分开发送。</p>
+<table>
+<thead>
+<tr>
+<th>以太网头</th>
+<th>IP头</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><strong>总结</strong>：各个局域网间想要通讯需要用到<code>IP 协议</code>（ 即跨网络传输 ），首先将包发送给默认网关（相当于管理者），再由网关转发给 IP 地址所在局域网。</p>
+<p> </p>
+<h5 id="arp-协议">ARP 协议</h5>
+<hr>
+<blockquote>
+<p>通信是基于 MAC 的广播方式实现，计算机在发包时，获取自身的 MAC 是容易的，如何获取目标主机的 MAC地址，就需要通过 <code>ARP 协议</code>。</p>
+<p><strong>功能</strong>： 广播的方式发送数据包，获取目标主机的 <code>MAC 地址</code></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>数据包地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同一子网</td>
+<td>目标主机mac，目标主机 ip</td>
+</tr>
+<tr>
+<td>不同子网</td>
+<td>网关 mac，目标主机 ip</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p> </p>
+<h5 id="发送数据">发送数据</h5>
+<hr>
+<blockquote>
+<p>设有主机<code>PC 1：192.168.11.10/24</code>、<code>PC 2：192.168.11.11/24</code>、<code>PC 3：172.16.45.10/24</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>源 MAC</th>
+<th>目标 MAC</th>
+<th>源 ip</th>
+<th>目标 ip（不同子网为网关IP）</th>
+<th>数据部分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送端主机</td>
+<td>发送端 MAC</td>
+<td>FF:FF:FF:FF:FF:FF</td>
+<td>172.16.10.10/24</td>
+<td>192.168.11.11/24</td>
+<td>数据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>同一局域网内</strong>：<code>PC 1</code> ==&gt;<code>PC 2</code></p>
+<ul>
+<li>
+<p>判断是否在同一局域网</p>
+</li>
+<li>
+<p>利用<code>ARP 协议</code>获取<code>PC 2</code>的<code>MAC 地址</code></p>
+<pre><code>PC1 MAC     FF:FF:FF:FF:FF:FF       192.168.11.10/24        192.168.11.11/24 
+</code></pre>
+</li>
+<li>
+<p>以上述格式发包，通过交换机广播，当所有PC拆包发现<code>IP</code>为自己时，回包加上自己的<code>MAC 地址</code></p>
+<pre><code>PC2 MAC     PC1 MAC     192.168.11.11/24        192.168.11.10/24
+</code></pre>
+</li>
+<li>
+<p><code>PC 1</code>获得<code>PC 2</code>的<code>MAC 地址</code>后：</p>
+<p>发包 <code>PC 1</code> ==&gt; <code>PC 2</code></p>
+<pre><code>PC1 MAC     PC2 MAC     192.168.11.10/24    192.168.11.11/24    数据
+</code></pre>
+</li>
+</ul>
+<p><strong>不在同一局域网内</strong>：<code>PC 1</code> ==&gt;<code>PC 3</code></p>
+<ul>
+<li>
+<p>判断是否在同一局域网</p>
+</li>
+<li>
+<p>利用<code>ARP 协议</code>获取<code>网关1</code>的<code>MAC 地址</code>，再由<code>网关1</code>去联络<code>网关2</code>，最后获得<code>PC 3</code>的<code>MAC 地址</code></p>
+<pre><code>PC1 MAC     FF:FF:FF:FF:FF:FF   192.168.11.10/24    192.168.11.1/24(网关) 
+</code></pre>
+</li>
+<li>
+<p>再将数据发给<code>网关1</code>，由<code>网关1</code>转发给<code>网关2</code></p>
+<pre><code>PC1 MAC     网关1 MAC     192.168.11.10/24    172.16.45.10/24     数据
+</code></pre>
+</li>
+<li>
+<p><code>PC 3</code>==&gt;<code>PC 1</code>（回包），也是先判断是否处于同一局域网，在按照上述方式回包</p>
+</li>
+</ul>
+<p><code>网关之间是通过路由传输</code></p>
+<p> </p>
+<h3 id="传输层">传输层</h3>
+<hr>
+<blockquote>
+<p><strong>由来</strong>：<code>网络层的</code>IP<code>区分子网，以太网的</code>MAC<code>找到目标 主机，但是实际使用的是应用程序，那么要实现应用程序之间的通讯，是通过端口来标识应用程序的，即应用程序与网卡光联的编号。</code></p>
+<p><strong>功能</strong>：<strong>建立端口到端口的通信</strong></p>
+<p><strong>端口范围</strong>：0 - 65535	<code>0 -1023 为系统占用端口</code></p>
+</blockquote>
+<p> </p>
+<h5 id="tcp-协议">TCP 协议</h5>
+<hr>
+<blockquote>
+<p>可靠传输，TCP数据包没有长度限制，理论上可以无限长，但是为了保证网络的效率，通常TCP数据包的长度不会超过IP数据包的长度，以确保单个TCP数据包不必再分割。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>以太网头</th>
+<th>IP头</th>
+<th>TCP头</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h5 id="udp-协议">UDP 协议</h5>
+<hr>
+<blockquote>
+<p>不可靠传输，报头部分一共只有8个字节，总长度不超过65,535字节，正好放进一个IP数据包。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>以太网头</th>
+<th>IP头</th>
+<th>UDP头</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="应用层">应用层</h3>
+<hr>
+<blockquote>
+<p><strong>由来</strong>：<code>用户使用的应用程序，工作于应用层，互联网是开发的，大家都可以开发自己的应用程序，数据多种多样，必须规定好数据的组织形式</code></p>
+<p><strong>功能</strong>： <strong>规定应用程序的数据格式</strong></p>
+<p>例：TCP协议可以为各种各样的程序传递数据，比如Email、WWW、FTP等等。那么，必须有不同协议规定电子邮件、网页、FTP数据的格式，这些应用程序协议就构成了应用层。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>以太网头</th>
+<th>IP头</th>
+<th>TCP头 / UDP头</th>
+<th>应用头</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="socket">Socket</h3>
+<hr>
+<blockquote>
+<p>两个进程需要进行通讯，最基本的一个前提是能够唯一的标识一个进程，在本地进程中我们可以使用 PID 来唯一标识一个进程，但 PID 只在本地唯一，网络中的两个进程 PID 冲突的几率很大。这时候我们需要另辟它径了，我们知道IP层的ip地址可以唯一标示主机，而TCP层协议和端口号可以唯一标示主机的一个进程，这样我们可以利用ip地址＋协议＋端口号唯一标示网络中的一个进程 。</p>
+<p>能够唯一标示网络中的进程后，它们就可以利用socket进行通信了，什么是socket呢？我们经常把socket翻译为<strong>套接字</strong>，socket是在<strong>应用层和传输层之间的一个抽象层</strong>，它把TCP/IP层复杂的操作抽象为几个简单的接口供应用层调用已实现进程在网络中通信。</p>
+<p>在 tcp、udp 协议之上，用户编写出一个应用软件时，需要定义其端口号，而单纯的使用 tcp、udp 协议去设定端口号费时费力，socket 大大节省了时间，只需简单的设置即可。</p>
+</blockquote>
+<p> </p>
+<h3 id="传输过程">传输过程</h3>
+<hr>
+<blockquote>
+<p>对于一个网络的传输过程来说，其实就是一个数据，在需要传输给网络中的另一个对象的时候，层层往下，不断往数据中添加内容（首部和尾部）。然后在物理网络中以比特传输，然后到达目标后，层层往上，不断剥离数据中的一部分（首部和尾部），最终又到达应用层，可以读出或者使用最终还原的数据。如下图所示：</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdn.net/20180502201449179?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI3OTA4MjEz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://img-blog.csdn.net/20180502201504631?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI3OTA4MjEz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="" loading="lazy"></figure>
+<p> </p>
+<h2 id="运行">运行</h2>
+<hr>
+<blockquote>
+<ul>
+<li>计算机启动后，首先运行<code>BIOS</code>得知操作系统位置</li>
+<li>启动操作系统（系统软件）：加载到内存，CPU从内存中读取再进行运算</li>
+<li>打开应用软件：操作输入设备，发送指令给操作系统，将软件加载到内存中，然后CPU读取</li>
+</ul>
+<p><code>BIOS</code>：<code>属于物理层面，其代码已经写在主板上，属于ROM只读储存器</code></p>
+<p><code>示例</code>：<code>打开编辑软件，它将运行于内存，只有保存后才会保存至硬盘，否则会丢失。</code></p>
+</blockquote>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://AnCIity.github.io/post/es6-acquaintance/">
+              <span class="post-title">
+                ES6 - 初识
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'caf7c6585a9a2921dd77',
+    clientSecret: 'eb5b2b6cea56c659822adf22c86b35bf90100b07',
+    repo: 'AnCIity.github.io',
+    owner: 'AnCIity',
+    admin: ['AnCIity'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+          
+          
+        
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://AnCIity.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>AnBlog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://AnCIity.github.io/media/scripts/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://AnCIity.github.io/media/scripts/clean-blog.min.js"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+
