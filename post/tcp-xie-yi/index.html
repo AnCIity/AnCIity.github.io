@@ -7,13 +7,13 @@
   <meta name="description" content="">
   <meta name="author" content="kveln">
   <meta name="keywords" content="">
-  <title>Git - 推送已有项目到远程仓库 | AnBlog</title>
+  <title>TCP协议 | AnBlog</title>
   <link href="http://nanzc.com/media/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="http://nanzc.com/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="Git - 推送已有项目到远程仓库 | AnBlog » Feed" href="http://nanzc.com/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="TCP协议 | AnBlog » Feed" href="http://nanzc.com/atom.xml">
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
@@ -72,13 +72,13 @@
           <div class="post-heading">
           	<span class="tags">
           	 
-            <a href="http://nanzc.com/tag/PjrnQSyr9/" class="tag">Git</a>
+            <a href="http://nanzc.com/tag/computers/" class="tag">Computers</a>
             
         </span>
-            <h1>Git - 推送已有项目到远程仓库</h1>
+            <h1>TCP协议</h1>
             <span class="meta">
             	Posted on
-              10-31 2019，1 min read
+              11-14 2019，3 min read
             </span>
           </div>
         </div>
@@ -91,53 +91,73 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <h2 id="git-推送已有项目到远程仓库">Git - 推送已有项目到远程仓库</h2>
+          <h1 id="tcp协议">TCP协议</h1>
+<hr>
 <blockquote>
-<p>提示：</p>
-<p>在GitHub中新建好仓库</p>
+<p><code>Organized by</code>：<strong>安南</strong> <code>City</code></p>
+<p><code>Completion time</code>：<code>2019-11-14</code></p>
+<p><code>Send error to email</code>：<a href="mailto:city@nanzc.com" title="send to email">city@nanzc.com</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>可靠传输，TCP数据包没有长度限制，理论上可以无限长，但是为了保证网络的效率，通常TCP数据包的长度不会超过IP数据包的长度，以确保单个TCP数据包不必再分割。</p>
+</blockquote>
+<p> </p>
+<h3 id="状态码">状态码</h3>
+<blockquote>
+<p>状态码：<code>传输数据过程中具有特殊意义的标识</code></p>
+<p><code>SYN</code>：开始，请求建立连接</p>
+<p><code>FIN</code>：结束，请求关闭连接</p>
+<p><code>ACK</code>：确认</p>
+<p><code>seq</code>：序列号（当前数据包本身序列号）</p>
+<p><code>ack</code>：下一序列号（期望下次数据包序列号）</p>
+</blockquote>
+<p> </p>
+<h3 id="三次握手">三次握手</h3>
+<hr>
+<p><strong>SYN</strong>：<code>Client</code> == <code>SYN = 1</code> <code>seq = x</code> ==&gt; <code>Server</code></p>
+<blockquote>
+<p><code>Client</code>主动请求<strong>建立连接</strong>将<code>SYN = 1</code>（SYN置1），并随机生成<strong>序列号</strong><code>seq = x</code>（初始为0），随后发送报文给<code>Server</code>，进入<code>SYN_SEND</code>状态。</p>
+</blockquote>
+<p><strong>SYN - ACK</strong>：<code>Client</code> &lt;== <code>SYN = 1</code> <code>ACK = 1</code> <code>seq = y</code> <code>ack = x + 1</code> == <code>Server</code></p>
+<blockquote>
+<p><code>Server</code>收到报文后，被动回应<code>Client</code>的<strong>建立连接</strong>请求将<code>SYN = 1</code>，<strong>确认</strong>请求<code>ACK = 1</code>，随机生成<strong>序列号</strong><code>seq = y</code>，并约定<strong>下次数据包序列号</strong><code>ack = x + 1</code>，进入<code>SYN_RECV</code>状态。</p>
+</blockquote>
+<p><strong>ACK</strong>：<code>Client</code> == <code>ACK = 1</code> <code>seq = x + 1</code> <code>ack = y + 1</code> ==&gt; <code>Server</code></p>
+<blockquote>
+<p><code>Client</code>收到应答报文验证，回应<code>Server</code><strong>确认</strong>收到报文<code>ACK = 1</code>，按照约定数据包<strong>序列号</strong>为<code>seq = x + 1</code>，也约定<strong>下次数据包序列号</strong><code>ack = y + 1</code>， 进入<code>Established</code>状态 。</p>
+<p>标志着连接建立成功，可以开始传输数据。</p>
+</blockquote>
+<p> </p>
+<h3 id="四次挥手">四次挥手</h3>
+<hr>
+<p><strong>FIN</strong>：<code>Client</code> == <code>FIN = 1</code> <code>seq = u</code> ==&gt; <code>Server</code></p>
+<blockquote>
+<p><code>Client</code>主动请求<strong>关闭连接</strong><code>FIN = 1</code>，并随机生成<strong>序列号</strong><code>seq = u</code>，发送给<code>Server</code>，<code>Client</code>进入<code>FIN_WAIT_1</code>状态。</p>
+</blockquote>
+<p><strong>ACK</strong>：<code>Client</code> &lt;== <code>ACK = 1</code> <code>seq = v</code> <code>ack = u + 1</code> == <code>Server</code></p>
+<blockquote>
+<p><code>Server</code>收到FIN后回复<strong>确认</strong>请求 <code>ACK = 1</code>，并随机生成<strong>序列号</strong><code>seq = v</code>，约定<strong>下次数据包序列号</strong><code>ack = u + 1</code>，<code>Server</code>进入<code>CLOSE_WAIT</code>状态。</p>
 </blockquote>
 <blockquote>
-<p>配置用户信息（已配置过，则忽略）</p>
+<p><code>Client</code>进入<code>FIN_WAIT_2</code>状态。==&gt;×</p>
 </blockquote>
-<pre><code class="language-shell">git config --global user.name 'AnCIity'
-git config --global user.email 'city@nanzc.com'
-</code></pre>
+<p><strong>FIN</strong>：<code>Client</code> &lt;== <code>FIN = 1</code> <code>seq = w</code> <code>ack = u + 1</code> == <code>Server</code></p>
 <blockquote>
-<p>初始化git</p>
+<p><code>Server</code>随即向<code>Client</code>发送<strong>关闭连接</strong>请求<code>FIN = 1</code>，并随机生成<strong>序列号</strong><code>seq = w</code>，约定<strong>下次数据包序列号</strong><code>ack = u + 1</code>，<code>Server</code>进入<code>LAST_ACK</code>状态。</p>
 </blockquote>
-<pre><code class="language-shell">git init
-</code></pre>
+<p><strong>ACK</strong>：<code>Client</code> == <code>ACK = 1</code> <code>seq = u + 1</code> <code>ack = w + 1</code> ==&gt; <code>Server</code></p>
 <blockquote>
-<p>关联网络仓库</p>
+<p><code>Client</code>收到FIN后，<code>Client</code>进入<code>TIME_WAIT</code>状态，并按照<strong>确认</strong>收到标识<code>ACK = 1</code>，约定<strong>序列号</strong><code>seq = u + 1</code> ，以及约定<strong>下次数据包序列号</strong><code>ack = w + 1</code>发送报文，<code>Server</code>进入<code>CLOSED</code>状态。</p>
+<p>标志着连接关闭成功，通道已封闭。</p>
 </blockquote>
-<pre><code class="language-shell">git remote add origin &lt;新建的仓库地址&gt;
-</code></pre>
-<blockquote>
-<p>添加到暂存区</p>
-</blockquote>
-<pre><code class="language-shell">git add .
-</code></pre>
-<blockquote>
-<p>把文件提交到仓库，引号内为提交说明</p>
-</blockquote>
-<pre><code class="language-shell">git commit -m ''
-</code></pre>
-<blockquote>
-<p>获取远程库与本地同步合并</p>
-</blockquote>
-<pre><code class="language-shell">git pull --rebase origin master
-</code></pre>
-<blockquote>
-<p>推送到远程仓库</p>
-</blockquote>
-<pre><code class="language-shell">git push -u origin master
-</code></pre>
+<p> </p>
 
           
           <p class="next-post">下一篇：
-            <a href="http://nanzc.com/post/git-brief/">
+            <a href="http://nanzc.com/post/vue-less-environment/">
               <span class="post-title">
-                Git - 简要指南
+                Vue - 配置less环境
               </span>
             </a>
           </p>

@@ -7,13 +7,13 @@
   <meta name="description" content="">
   <meta name="author" content="kveln">
   <meta name="keywords" content="">
-  <title>Git - 推送已有项目到远程仓库 | AnBlog</title>
+  <title>Vue - 插槽系统 | AnBlog</title>
   <link href="http://nanzc.com/media/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="http://nanzc.com/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="Git - 推送已有项目到远程仓库 | AnBlog » Feed" href="http://nanzc.com/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="Vue - 插槽系统 | AnBlog » Feed" href="http://nanzc.com/atom.xml">
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
@@ -72,13 +72,13 @@
           <div class="post-heading">
           	<span class="tags">
           	 
-            <a href="http://nanzc.com/tag/PjrnQSyr9/" class="tag">Git</a>
+            <a href="http://nanzc.com/tag/FB1uDZKku/" class="tag">Vue</a>
             
         </span>
-            <h1>Git - 推送已有项目到远程仓库</h1>
+            <h1>Vue - 插槽系统</h1>
             <span class="meta">
             	Posted on
-              10-31 2019，1 min read
+              12-11 2019，4 min read
             </span>
           </div>
         </div>
@@ -91,53 +91,193 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <h2 id="git-推送已有项目到远程仓库">Git - 推送已有项目到远程仓库</h2>
+          <h1 id="vue-插槽系统">Vue - 插槽系统</h1>
+<hr>
 <blockquote>
-<p>提示：</p>
-<p>在GitHub中新建好仓库</p>
+<p><code>Organized by</code>：<strong>安南</strong> <code>City</code></p>
+<p><code>Completion time</code>：<code>2019-12-11</code></p>
+<p><code>Send error to email</code>：<a href="mailto:city@nanzc.com" title="send to email">city@nanzc.com</a></p>
 </blockquote>
+<hr>
 <blockquote>
-<p>配置用户信息（已配置过，则忽略）</p>
+<p>Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 <a href="https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md">Web Components 规范草案</a>，将 <code>&lt;slot&gt;</code> 元素作为</p>
+<p>承载分发内容的出口。</p>
+<p><mark>注意</mark>： 父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。</p>
 </blockquote>
-<pre><code class="language-shell">git config --global user.name 'AnCIity'
-git config --global user.email 'city@nanzc.com'
+<p> </p>
+<h2 id="基本使用">基本使用</h2>
+<hr>
+<blockquote>
+<p>插槽的作用就是把值放入到 <code>子组件</code> 预留的指定位置</p>
+</blockquote>
+<p> </p>
+<h3 id="父组件"><code>父组件</code></h3>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;parent&quot;&gt;
+        &lt;!-- 使用子组件：未插值 --&gt;
+        &lt;child&gt;&lt;/child&gt;
+        &lt;!-- 使用子组件：插值 --&gt;
+        &lt;child&gt;将不会显示默认内容&lt;/child&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import child from &quot;./child&quot;
+    
+    export default {	
+        data(){
+            return{}
+        },
+        methods: {}
+        components:{
+            child
+        }
+    }
+&lt;/script&gt;
 </code></pre>
-<blockquote>
-<p>初始化git</p>
-</blockquote>
-<pre><code class="language-shell">git init
+<h3 id="子组件"><code>子组件</code></h3>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;child&quot;&gt;
+        &lt;!-- 1.使用 slot 标签占位 --&gt;
+        &lt;slot&gt;默认内容：父组件未插值时显示&lt;slot&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {}
+&lt;/script&gt;
 </code></pre>
+<p> </p>
+<h2 id="具名插槽">具名插槽</h2>
+<hr>
 <blockquote>
-<p>关联网络仓库</p>
+<p>当我们需要多个插槽时，我们必须区分它们</p>
+<ul>
+<li>定义插槽名：<code>&lt;slot name=&quot;slotName&quot;&gt;Content&lt;/slot&gt;</code>
+<ul>
+<li>默认插槽名：<code>default</code></li>
+</ul>
+</li>
+<li>使用指定插槽：
+<ul>
+<li><code>&lt;template v-slot:header&gt;Content&lt;/template&gt;</code></li>
+<li>简写：<code>&lt;template #header&gt;Content&lt;/template&gt;</code></li>
+</ul>
+</li>
+</ul>
 </blockquote>
-<pre><code class="language-shell">git remote add origin &lt;新建的仓库地址&gt;
+<p> </p>
+<h3 id="父组件-2"><code>父组件</code></h3>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;parent&quot;&gt;
+        &lt;child&gt;
+            &lt;!-- template：起到临时包裹的作用，不会被解析到 html --&gt;
+            &lt;template v-slot:header&gt;
+                &lt;p&gt;头部信息1&lt;/p&gt;
+                &lt;p&gt;头部信息2&lt;/p&gt;
+            &lt;/template&gt;
+            &lt;p&gt;主要内容1&lt;/p&gt;
+            &lt;p&gt;主要内容2&lt;/p&gt;
+            &lt;template v-slot:footer&gt;
+                &lt;p&gt;底部信息1&lt;/p&gt;
+                &lt;p&gt;底部信息2&lt;/p&gt;
+            &lt;/template&gt;
+    	&lt;/child&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import child from &quot;./child&quot;
+    
+    export default {	
+        data(){
+            return{}
+        },
+        methods: {}
+        components:{
+            child
+        }
+    }
+&lt;/script&gt;
 </code></pre>
+<h3 id="子组件-2"><code>子组件</code></h3>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;child&quot;&gt;
+        &lt;header&gt;
+            &lt;slot name=&quot;header&quot;&gt;头部默认内容&lt;/slot&gt;
+        &lt;/header&gt;
+        &lt;main&gt;
+            &lt;slot&gt;默认插槽&lt;/slot&gt;
+        &lt;/main&gt;
+        &lt;footer&gt;
+            &lt;slot name=&quot;footer&quot;&gt;底部默认内容&lt;/slot&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {}
+&lt;/script&gt;
+</code></pre>
+<p> </p>
+<h2 id="作用域插槽">作用域插槽</h2>
+<hr>
 <blockquote>
-<p>添加到暂存区</p>
+<p>有时让插槽内容能够访问子组件中才有的数据是很有用的。</p>
 </blockquote>
-<pre><code class="language-shell">git add .
+<p> </p>
+<h3 id="父组件-3"><code>父组件</code></h3>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;parent&quot;&gt;
+        &lt;child :child-user=&quot;parentUser&quot;&gt;
+            &lt;!-- 在 v-slot 属性值中接收绑定的参数，对应绑定属性名，以下为解构形式 --&gt;
+            &lt;template v-slot=&quot;{ name, lastName }&quot;&gt;
+                {{ name + lastName }}
+            &lt;/template&gt;
+    	&lt;/child&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import child from &quot;./child&quot;
+    
+    export default {	
+        data(){
+            return{
+                parentUser: {
+                    name: &quot;City&quot;,
+                    lastName: &quot;AnNan&quot;
+                }
+            }
+        },
+        methods: {}
+        components:{
+            child
+        }
+    }
+&lt;/script&gt;
 </code></pre>
-<blockquote>
-<p>把文件提交到仓库，引号内为提交说明</p>
-</blockquote>
-<pre><code class="language-shell">git commit -m ''
+<h3 id="子组件-3"><code>子组件</code></h3>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;child&quot;&gt;
+         &lt;!-- 使用属性的方式，向插槽绑定数据 --&gt;
+         &lt;slot :user=&quot;childUser&quot;&gt;{{ &quot;默认显示：&quot; + user.name }}&lt;slot/&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        props: ['childUser']
+    }
+&lt;/script&gt;
 </code></pre>
-<blockquote>
-<p>获取远程库与本地同步合并</p>
-</blockquote>
-<pre><code class="language-shell">git pull --rebase origin master
-</code></pre>
-<blockquote>
-<p>推送到远程仓库</p>
-</blockquote>
-<pre><code class="language-shell">git push -u origin master
-</code></pre>
+<p> </p>
 
           
           <p class="next-post">下一篇：
-            <a href="http://nanzc.com/post/git-brief/">
+            <a href="http://nanzc.com/post/vue-component-jiaohu/">
               <span class="post-title">
-                Git - 简要指南
+                Vue - 组件数据交互
               </span>
             </a>
           </p>

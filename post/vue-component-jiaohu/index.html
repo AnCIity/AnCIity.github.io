@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="referrer" content="never">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <meta name="keywords" content="">
+  <title>Vue - 组件数据交互 | AnBlog</title>
+  <link href="http://nanzc.com/media/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="http://nanzc.com/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="Vue - 组件数据交互 | AnBlog » Feed" href="http://nanzc.com/atom.xml">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <script src="http://nanzc.com/media/scripts/jquery.min.js"></script>
+  <link href="http://nanzc.com/styles/main.css" rel="stylesheet">
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="http://nanzc.com">AnBlog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/archives">归档</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/post/about">关于</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('http://nanzc.com/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+            <a href="http://nanzc.com/tag/FB1uDZKku/" class="tag">Vue</a>
+            
+        </span>
+            <h1>Vue - 组件数据交互</h1>
+            <span class="meta">
+            	Posted on
+              12-08 2019，6 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 id="vue-组件数据交互">Vue - 组件数据交互</h1>
+<hr>
+<blockquote>
+<p><code>Organized by</code>：<strong>安南</strong> <code>City</code></p>
+<p><code>Completion time</code>：<code>2019-12-08</code></p>
+<p><code>Send error to email</code>：<a href="mailto:city@nanzc.com" title="send to email">city@nanzc.com</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>组件系统中的独立可复用组件之间，如何相互访问进行数据的交互呢？</p>
+<p>我们将使用比较直观的  <a href="https://cn.vuejs.org/v2/guide/components-registration.html#%E6%A8%A1%E5%9D%97%E7%B3%BB%E7%BB%9F">模块系统</a> 为大家展示。</p>
+</blockquote>
+<p> </p>
+<h2 id="子组件访问父组件">子组件访问父组件</h2>
+<hr>
+<blockquote>
+<p>首先来看 <code>子组件</code> 如何访问 <code>父组件</code></p>
+</blockquote>
+<p> </p>
+<h3 id="props推荐">Props（推荐）</h3>
+<hr>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#props">props</a>：<code>父组件</code> 通过 <code>props</code> 属性向 <code>子组件</code> 传数据和方法</p>
+</blockquote>
+<h4 id="父组件"><code>父组件</code></h4>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;parent&quot;&gt;
+        &lt;!-- 3.向子组件传递数据，属性使用短横线命名 --&gt;
+        &lt;child :child-data=&quot;parentData&quot; :child-method=&quot;parentMethod&quot;&gt;&lt;/child&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    // 1.导入子组件
+    import child from &quot;./child&quot;
+    
+    export default {	
+        data(){
+            return{
+                parentData: &quot;父组件数据&quot;
+            }
+        },
+        methods: {
+            parentMethod(){
+                console.log(&quot;父组件方法&quot;)
+            }
+        }
+        // 2.注册子组件
+        components:{
+            child
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="子组件"><code>子组件</code></h4>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;child&quot;&gt;
+        &lt;!-- 2.使用父组件数据 --&gt;
+        {{ childData }}
+        &lt;button @click=&quot;childMethod&quot;&gt;调用父组件方法&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        // 1.使用 props 属性接收，使用驼峰命名
+        props: [&quot;childData&quot;, &quot;childMethod&quot;]
+    }
+&lt;/script&gt;
+</code></pre>
+<p> </p>
+<h3 id="parent">Parent</h3>
+<hr>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#parent"><code>vm.$parent</code></a>：父实例对象</p>
+<p><code>子组件</code>通过实例对象的 <code>$parent</code>属性访问 <code>父组件</code> 的数据和方法</p>
+</blockquote>
+<h4 id="父组件-2"><code>父组件</code></h4>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;parent&quot;&gt;
+        &lt;!-- 3.向子组件传递数据，属性使用短横线命名 --&gt;
+        &lt;child :child-data=&quot;parentData&quot; :child-method=&quot;parentMethod&quot;&gt;&lt;/child&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    // 1.导入子组件
+    import child from &quot;./child&quot;
+    
+    export default {	
+        data(){
+            return{
+                parentData: &quot;父组件数据&quot;
+            }
+        },
+        methods: {
+            parentMethod(){
+                console.log(&quot;父组件方法&quot;)
+            }
+        }
+        // 2.注册子组件
+        components:{
+            child
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="子组件-2"><code>子组件</code></h4>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;child&quot;&gt;
+        &lt;!-- 1.使用父组件数据 --&gt;
+        {{ this.$parent.parentData }}
+        &lt;button @click=&quot;childMethod&quot;&gt;调用父组件方法&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        methods: {
+            // 2.定义子组件方法
+            childMethod(){
+                // 3.使用父组件方法
+                this.$parent.parentMethod()
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p> </p>
+<h3 id="emit">Emit</h3>
+<hr>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#vm-emit">vm.$emit</a>：</p>
+<ul>
+<li><code>Type</code>: <code>Function</code></li>
+<li><code>Description</code>: 通过<code>$emit</code>触发当前实例上的事件</li>
+<li><code>Use</code>: <code>vm.$emit( eventName, […args] )</code></li>
+</ul>
+</blockquote>
+<h4 id="父组件-3"><code>父组件</code></h4>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;parent&quot;&gt;
+        &lt;!-- 3.向子组件传递数据，属性使用短横线命名 --&gt;
+        &lt;child :child-method=&quot;parentMethod&quot;&gt;&lt;/child&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    // 1.导入子组件
+    import child from &quot;./child&quot;
+    
+    export default {	
+        methods: {
+            parentMethod(str){
+                console.log(&quot;父组件方法&quot;, &quot;参数：&quot; + str)
+            }
+        }
+        // 2.注册子组件
+        components:{
+            child
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="子组件-3"><code>子组件</code></h4>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div id=&quot;child&quot;&gt;
+        &lt;!-- 3.单击时调用方法 --&gt;
+        &lt;button @click=&quot;childMethod&quot;&gt;调用父组件方法&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        methods: {
+            // 1.定义子组件方法
+            childMethod(){
+                 // 2.通过 $emit 调用父组件 parentMethod 事件绑定方法并传入值
+        		this.$emit('parentMethod', 'hello');
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p> </p>
+<h2 id="父组件访问子组件">父组件访问子组件</h2>
+<hr>
+<blockquote>
+<p>有什么 <code>父组件</code> 访问 <code>子组件</code>的方法呢？</p>
+<p>我们在 <code>父组件</code> 中使用子组件标签时，使用 <code>ref</code> 属性注册子组件引用信息</p>
+<p>调用时使用实例属性 <code>$refs</code> 访问已注册引用信息，通过引用信息访问 <code>子组件</code></p>
+</blockquote>
+<p> </p>
+<h3 id="ref">Ref</h3>
+<hr>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#vm-emit">ref</a>：被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 <code>$refs</code> 对象上</p>
+<p><a href="https://cn.vuejs.org/v2/api/#ref"><code>vm.$refs</code></a>：</p>
+<ul>
+<li><code>Type</code>: <code>Object</code></li>
+<li><code>Description</code>: 一个对象，持有注册过 <code>ref</code> 的所有 DOM 元素和组件实例。</li>
+</ul>
+</blockquote>
+<h4 id="子组件-4"><code>子组件</code></h4>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div  id=&quot;child&quot;&gt;
+    	Child
+    &lt;/div&gt;
+&lt;/template&gt;
+ 
+&lt;script&gt;
+    export default {
+        name: &quot;child&quot;
+        methods: {
+            childMethod(str) {
+                console.log(&quot;子组件方法&quot;, &quot;参数：&quot; + str)
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="父组件-4"><code>父组件</code></h4>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div id=&quot;parent&quot;&gt;
+    &lt;button @click=&quot;clickparent&quot;&gt;调用子组件方法&lt;/button&gt;
+     &lt;!-- 3.使用 ref 注册子组件引用信息 --&gt;
+    &lt;child ref=&quot;mychild&quot;&gt;&lt;/child&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+ 
+&lt;script&gt;
+    // 1.导入子组件
+    import child from './child';
+    
+    export default {
+        name: &quot;parent&quot;,
+        methods: {
+          	// 4.定义父组件方法
+          	clickparent() {
+            	// 5.使用 $refs 调用子组件 childMethod 方法
+            	this.$refs.mychild.childMethod(&quot;Hello Child&quot;);
+          	}
+        },
+        // 2.注册子组件
+        components: {
+          	child
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p> </p>
+<h2 id="非父子组件交互">非父子组件交互</h2>
+<hr>
+<blockquote>
+<p>在非父子组件中，我们可以依托于事件中心进行事件处理。</p>
+<p>也就是在事件中心注册事件进行托管，可以根据需求封装成事件处理中心，此处只介绍基本使用。</p>
+<p>详细：<a href="%5Bhttps://cn.vuejs.org/v2/api/#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95-%E4%BA%8B%E4%BB%B6%5D(https://cn.vuejs.org/v2/api/#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95-%E4%BA%8B%E4%BB%B6)">实例方法-事件</a></p>
+</blockquote>
+<pre><code class="language-javascript">// 事件中心：创建独立的事件中心，用以管理组件间的通信
+const hub = new Vue()
+
+// 注册：
+hub.$on(&quot;event-name&quot;, function(value...) {})
+
+// 调用：
+hub.$emit(&quot;event-name&quot;, value...)
+
+// 销毁：
+hub.$off(&quot;event-name&quot;)
+</code></pre>
+<p> </p>
+<h2 id="访问根实例">访问根实例</h2>
+<hr>
+<blockquote>
+<p>组件众多，我们可以使用实例的 <code>$root</code> 属性访问根实例。</p>
+</blockquote>
+<p><code>vm.$root</code>：<strong>当前组件树的根 <code>Vue</code> 实例</strong>。如果当前实例没有父实例，此实例将会是其自己。</p>
+<p> </p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="http://nanzc.com/post/tcp-xie-yi/">
+              <span class="post-title">
+                TCP协议
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'caf7c6585a9a2921dd77',
+    clientSecret: 'eb5b2b6cea56c659822adf22c86b35bf90100b07',
+    repo: 'AnCIity.github.io',
+    owner: 'AnCIity',
+    admin: ['AnCIity'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+          
+          
+        
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="http://nanzc.com/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>AnBlog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="http://nanzc.com/media/scripts/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="http://nanzc.com/media/scripts/clean-blog.min.js"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+
