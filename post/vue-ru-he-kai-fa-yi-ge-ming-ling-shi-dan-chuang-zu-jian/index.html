@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="referrer" content="never">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <meta name="keywords" content="">
+  <title>Vue - 如何开发一个命令式弹窗组件 | AnBlog</title>
+  <link href="https://anciity.github.io/media/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://anciity.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="Vue - 如何开发一个命令式弹窗组件 | AnBlog » Feed" href="https://anciity.github.io/atom.xml">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <script src="https://anciity.github.io/media/scripts/jquery.min.js"></script>
+  <link href="https://anciity.github.io/styles/main.css" rel="stylesheet">
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://anciity.github.io">AnBlog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/archives">归档</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/post/about">关于</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://anciity.github.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+            <a href="https://anciity.github.io/tag/FB1uDZKku/" class="tag">Vue</a>
+            
+        </span>
+            <h1>Vue - 如何开发一个命令式弹窗组件</h1>
+            <span class="meta">
+            	Posted on
+              04-13 2020，6 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 id="vue-如何开发一个命令式弹窗组件">Vue - 如何开发一个命令式弹窗组件</h1>
+<hr>
+<blockquote>
+<p><code>Organized by</code>：<strong>安南</strong> <code>City</code></p>
+<p><code>Completion time</code>：<code>2020-04-13</code></p>
+<p><code>Send error to email</code>：<a href="mailto:city@nanzc.com" title="send to email">city@nanzc.com</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><code>Description</code></p>
+<p>​	在最近开发个人博客时，少不了用到命令式弹窗组件，于是...</p>
+<p>顺便记录下吧。</p>
+</blockquote>
+<p> </p>
+<p>要实现命令式弹窗组件，需要涉及：<a href="https://cn.vuejs.org/v2/api/#Vue-extend">Vue.extend()</a>、<a href="https://cn.vuejs.org/v2/api/#vm-el">vm.<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;#&#039; at position 38: …ejs.org/v2/api/#̲vm-mount)、[vm.'>mount()](https://cn.vuejs.org/v2/api/#vm-mount)、[vm.</span>el</a></p>
+<p> </p>
+<h2 id="涉及知识">涉及知识</h2>
+<hr>
+<p> </p>
+<h3 id="vueextend-options">Vue.extend( options )</h3>
+<hr>
+<blockquote>
+<p><strong>params</strong>:</p>
+<p><code>options</code>  <code>{Object}</code> - 组件选项的对象</p>
+</blockquote>
+<p>​	使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。</p>
+<p> </p>
+<blockquote>
+<p>如果 Vue 实例在实例化时没有收到 <code>el</code> 选项，则它处于“未挂载”状态，没有关联的 DOM 元素。</p>
+<p>可以使用 <code>vm.$mount()</code> 手动地挂载一个未挂载的实例。</p>
+</blockquote>
+<p> </p>
+<h3 id="vmmount-elementorselector">vm.$mount( [elementOrSelector] )</h3>
+<hr>
+<blockquote>
+<p><strong>params</strong>:</p>
+<p>​	<code>[elementOrSelector]</code>  <code>{Element | String}</code> - 元素或选择器</p>
+<p>​	<code>[hydrating]</code>  <code>{boolean}</code></p>
+<p><strong>return</strong>:</p>
+<p>​	<code>vm</code> - 实例自身</p>
+</blockquote>
+<p>可以使用该方法手动挂载一个未挂载的实例。</p>
+<p>如果没有提供 <code>elementOrSelector</code> 参数，模板将被渲染为文档之外的的元素，并且你必须使用原生 DOM API 把它插入文档中。</p>
+<p> </p>
+<blockquote>
+<p>这里在后面代码中，我们将采用原生 API 插入文档末尾。</p>
+<p>当然你也可以直接提供 <code>elementOrSelector</code> 参数，那就无需使用 <code>vm.$el</code> 。</p>
+</blockquote>
+<p> </p>
+<h3 id="vmel">vm.$el</h3>
+<hr>
+<blockquote>
+<p><strong>type</strong>:</p>
+<p>​	<code>Element</code></p>
+</blockquote>
+<p>Vue 实例使用的根 DOM 元素。</p>
+<p> </p>
+<blockquote>
+<p>使用 <code>vm.$mount()</code> 手动挂载后，并且没有提供 <code>elementOrSelector</code> 参数，需要手动插入文档。</p>
+<p>还有一个知识，将在使用组件时讲到，为了可读流程就暂不讲。</p>
+</blockquote>
+<p> </p>
+<p>这里我们将以一个简洁的提示框为例。</p>
+<p> </p>
+<h2 id="目录结构">目录结构</h2>
+<hr>
+<ul>
+<li>message：组件目录
+<ul>
+<li>index.vue：组件布局、样式、交互逻辑</li>
+<li>index.js： 组件实例化、挂载方法、暴露安装函数</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h2 id="组件规划">组件规划</h2>
+<hr>
+<p>这是一个命令式调用组件，所以我们需要定义形参</p>
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>key</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>title</td>
+<td>提示信息</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td></td>
+<td>time</td>
+<td>存在时间 (ms)</td>
+<td>4000</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h2 id="代码实践">代码实践</h2>
+<hr>
+<p>由于这里只是示例，我就不过多解释了，大家拿出平时的基操就行。</p>
+<p>具体重点看代码中文注释（英文注释的作用就是练单词）。</p>
+<p>自由编码没有固定的格式，练得就是随机应变。</p>
+<p> </p>
+<ul>
+<li>
+<p>index.vue</p>
+<pre><code class="language-vue">/**
+ * @author City
+ * @description 消息组件
+ * TODO: 这里仅供参考，不细封。
+ */
+
+&lt;template&gt;
+    &lt;div class=&quot;message&quot; :style=&quot;{top}&quot;&gt;{{title}}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name: &quot;Message&quot;,
+    data() {
+        return {
+            /* style */
+            top: &quot;-40px&quot;
+            
+            /* params */
+            // 1.可传参数
+            // 不传则为此处定义默认值，传递将被使用的 Object.assign() 方法覆盖;
+            title: &quot;&quot;,
+            time: 4000,
+        };
+    },
+    methods: {
+        /* show message */
+        // 2.show 方法将在初始化实例挂载组件、DOM 追加到文档之后调用
+        show() {
+            // trigger start transition
+            setTimeout(() =&gt; {
+                this.top = &quot;40px&quot;;
+            }, 50);
+
+            // time out hide
+            setTimeout(() =&gt; this.hide(), this.time - 1000);
+        },
+        /* hide message */
+        hide() {
+            // trigger end transition
+            this.top = &quot;-40px&quot;;
+
+            // destroy component
+            setTimeout(() =&gt; {
+                // 3.删除 DOM 节点，并销毁组件
+                document.body.removeChild(this.$el);
+                this.$destroy();
+            }, 1000);
+        }
+    }
+};
+&lt;/script&gt;
+
+&lt;style lang=&quot;stylus&quot; scoped&gt;
+.message
+    position fixed
+    top -40px
+    right 80px
+    z-index 1001
+    padding 0 30px
+    height 40px
+    line-height @height
+    border-radius 15px
+    transition top 1s
+    text-align center
+    background #3d86af
+    color white
+&lt;/style&gt;
+</code></pre>
+<p>这里没有使用 <code>mounted</code> 生命周期，而是在命令调用组件时触发 <code>show</code> 方法，当然你可以不这样。</p>
+<p> </p>
+</li>
+<li>
+<p>index.js</p>
+<pre><code class="language-js">/**
+ * @author City
+ * @description 组件实例化 挂载方法 暴露安装函数
+ */
+
+import Vue from &quot;vue&quot;;
+import message from &quot;./index.vue&quot;;
+
+/* extend message create constructor */
+// 1.创建组件构造函数
+const MessageConstructor = Vue.extend(message);
+
+/* init instance function */
+const init = options =&gt; {
+    // instantiation constructor
+    // 2.实例化组件
+    const instance = new MessageConstructor();
+
+    // merge data property
+    // 3.将传递参数直接覆盖原实例 data 定义参数
+    Object.assign(instance, options);
+
+    // create virtual DOM and append to document
+    // 4.渲染为文档之外元素，也可理解为虚拟 DOM，然后追加到文档
+    document.body.appendChild(instance.$mount().$el);
+
+    // return this instance
+    // 5.返回组件实例
+    return instance;
+};
+
+/* caller */
+// 5.创建命令调用函数，并接受参数
+// 形参需要为对象形式，并且命名需要和 data 定义参数一致，当然你也可以细化封装
+const caller = options =&gt; {
+    // init instance
+    // 6.初始化 DOM
+    const instance = init(options);
+
+    // call show function
+    // 7.调用实例 show 方法
+    instance.show();
+};
+
+/* export install function */
+// 8.导出安装方法
+export default function(vue) {
+    // 9.在 Vue 原型上挂载命令调用函数
+    vue.prototype.$message = caller;
+};
+</code></pre>
+<p>这里面重点为 <strong>传参方式</strong> 体现在第 <code>3</code> 步。</p>
+<p>这里封装的并不是很好，这里为了示例没有修改，按照实际需求走就行。</p>
+</li>
+</ul>
+<p> </p>
+<h2 id="使用组件">使用组件</h2>
+<hr>
+<p>使用组件需要知道 <a href="https://cn.vuejs.org/v2/api/#Vue-use">Vue.use()</a> 方法的知识。</p>
+<p> </p>
+<h3 id="vueuse-plugin">Vue.use( plugin )</h3>
+<hr>
+<blockquote>
+<p><strong>params</strong>:</p>
+<p>​	<code>plugin</code>  {Object | Function}</p>
+</blockquote>
+<p>安装 <code>Vue.js</code> 插件。如果插件是一个对象，必须提供 <code>install</code> 方法。如果插件是一个函数，它会被作为 <code>install</code> 方法。<code>install</code> 方法调用时，<strong>会将 Vue 作为参数传入</strong>。</p>
+<p>该方法需要在调用 <code>new Vue()</code> 之前被调用。</p>
+<p>当 <code>install</code> 方法被同一个插件多次调用，插件将只会被安装一次。</p>
+<p> </p>
+<p>这里我们就直接在 <code>main.js</code> 中使用，你也可以在项目中将UI当做插件引入，在UI中处理组件 <code>install</code> 方法。</p>
+<ul>
+<li>
+<p>main.js</p>
+<pre><code class="language-js">import massage from &quot;./components/massage&quot;; // 示例目录
+// ...
+Vue.use(massage)
+// ...
+</code></pre>
+<p> </p>
+</li>
+</ul>
+<h3 id="命令式调用组件">命令式调用组件</h3>
+<hr>
+<pre><code class="language-js">this.$message({title: &quot;信息内容&quot;})
+</code></pre>
+<p>好了调用就是这么简单，还一个 <code>time</code> 我们不传则为默认值。</p>
+<p> </p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://anciity.github.io/post/webpack-project/">
+              <span class="post-title">
+                Webpack - 前端工程化
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'caf7c6585a9a2921dd77',
+    clientSecret: 'eb5b2b6cea56c659822adf22c86b35bf90100b07',
+    repo: 'AnCIity.github.io',
+    owner: 'AnCIity',
+    admin: ['AnCIity'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+          
+          
+        
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+            <li class="list-inline-item">
+              <a href="https://github.com/AnCIity" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://anciity.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>AnBlog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://anciity.github.io/media/scripts/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://anciity.github.io/media/scripts/clean-blog.min.js"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+
